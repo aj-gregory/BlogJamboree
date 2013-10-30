@@ -1,7 +1,11 @@
+<h1>Home Page</h1>
 <ul>
-<%= console.log(posts) %>
 	<% posts.forEach(function (post) { %>
-    <li> <%= post.get("title") %>
-		<button class='delete' data-id='<%= post.get('id') %>'>Delete</button></li>
+    <li>
+		  <a href=<%= '#/posts/' + post.get('id') %>>
+		  <%= post.get("title") %>
+			</a>
+			<button class='delete' data-id='<%= post.get('id') %>'>Delete</button>
+		</li>
 	<% }); %>
 </ul>
