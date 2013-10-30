@@ -1,0 +1,7 @@
+<ul>
+<%= console.log(posts) %>
+	<% posts.forEach(function (post) { %>
+    <li> <%= post.get("title") %>
+		<button class='delete' data-id='<%= post.get('id') %>'>Delete</button></li>
+	<% }); %>
+</ul>
