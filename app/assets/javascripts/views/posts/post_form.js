@@ -16,6 +16,7 @@ JournalApp.Views.PostForm = Backbone.View.extend({
 
 	submit: function(event) {
 		event.preventDefault();
+		var that = this;
 
 		var formData = $(event.currentTarget).serializeJSON();
 
@@ -28,13 +29,18 @@ JournalApp.Views.PostForm = Backbone.View.extend({
 			this.model.save({}, {
 	 			success: function () {
 	 				Backbone.history.navigate("/", { trigger: true });
-	 			},
+	 			}
 			});
     } else {
 			this.collection.create(this.model, {
 	 			success: function () {
 	 				Backbone.history.navigate("/", { trigger: true });
 	 			},
+
+				error: function () {
+					console.log(this);
+					that.collection.remove(this.model);
+				}
 			});
     }
 	}
