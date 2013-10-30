@@ -12,7 +12,8 @@ JournalApp.Routers.Posts = Backbone.Router.extend({
     	collection: JournalApp.posts
     });
 
-		$('body').html(view.render().$el);
+		$('.sidebar').html(view.render().$el);
+		$('.content').empty();
 	},
 
 	postShow: function(id) {
@@ -20,7 +21,7 @@ JournalApp.Routers.Posts = Backbone.Router.extend({
     	model: JournalApp.posts.get(id)
     });
 
-		$('body').html(view.render().$el);
+		$('.content').html(view.render().$el);
 	},
 
 	postEdit: function(id) {
@@ -28,7 +29,7 @@ JournalApp.Routers.Posts = Backbone.Router.extend({
 			model: JournalApp.posts.get(id)
 		});
 
-		$('body').html(view.render().$el);
+		$('.content').html(view.render().$el);
 	},
 
 	postNew: function() {
@@ -38,6 +39,6 @@ JournalApp.Routers.Posts = Backbone.Router.extend({
 			collection: JournalApp.posts
 		});
 
-		$('body').html(view.render().$el);
+		$('.content').html(view.render().$el);
 	}
 });
