@@ -9,7 +9,8 @@ JournalApp.Views.PostsIndex = Backbone.View.extend({
   },
 
 	events: {
-    "click .delete":"deletePost"
+    "click .delete":"deletePost",
+		"click .edit":"displayEdit"
 	},
 
 	render: function() {
@@ -29,6 +30,12 @@ JournalApp.Views.PostsIndex = Backbone.View.extend({
 				alert("DELETED!");
 			}
 		});
+	},
+
+	displayEdit: function(event) {
+		var postID = $(event.currentTarget).attr('data-id');
+		urlString = "/posts/" + postID + "/edit";
+		Backbone.history.navigate(urlString, { trigger: true });
 	}
 
 });

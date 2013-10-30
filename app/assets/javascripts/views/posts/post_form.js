@@ -1,4 +1,4 @@
-JournalApp.Views.PostEdit = Backbone.View.extend({
+JournalApp.Views.PostForm = Backbone.View.extend({
   template: JST['posts/edit'],
 
 	events: {
@@ -24,10 +24,18 @@ JournalApp.Views.PostEdit = Backbone.View.extend({
 			'body':formData.post.body
 		});
 
-		this.model.save({}, {
- 			success: function () {
- 				Backbone.history.navigate("/", { trigger: true });
- 			},
-		});
+    if (!this.model.isNew()){
+			this.model.save({}, {
+	 			success: function () {
+	 				Backbone.history.navigate("/", { trigger: true });
+	 			},
+			});
+    } else {
+			this.collection.create(this.model, {
+	 			success: function () {
+	 				Backbone.history.navigate("/", { trigger: true });
+	 			},
+			});
+    }
 	}
 });
