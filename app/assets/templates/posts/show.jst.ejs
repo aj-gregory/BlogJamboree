@@ -5,3 +5,13 @@
 
 <br><br>
 <hr>
+
+<h2>Comments</h2>
+<ul>
+  <% postComments.each(function(comment) { %>
+    <li><%= comment.escape('body') %></li>
+  <% }); %>
+</ul>
+<br>
+<textarea class='newComment' rows='6' cols='39'></textarea>
+<button class='addCommentBtn'>Add Comment</button>

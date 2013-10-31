@@ -5,12 +5,14 @@ JournalApp.Views.PostShow = Backbone.View.extend({
 		'dblclick .title':"editTitle",
 		'dblclick .body':"editBody",
 		'blur .titleEditBox':"updateTitle",
-		'blur .bodyEditBox':"updateBody"
+		'blur .bodyEditBox':"updateBody",
+		'click .addCommentBtn':'addComment'
 	},
 
 	render: function() {
 		renderedContent = this.template({
-			post: this.model
+			post: this.model,
+			postComments: this.model.comments()
 		});
 
 		this.$el.html(renderedContent);
@@ -53,5 +55,14 @@ JournalApp.Views.PostShow = Backbone.View.extend({
 
 		this.model.save();
 		this.render();
+	},
+
+	addComment: function(event) {
+		var newComment = new JournalApp.Models.Comment();
+		var commentBody = $('.newComment').val();
+		newComment.set({body: commentBody});
+		this.model.postComments.add(newComment);
+		console.log(this.model);
+		this.model.save();
 	}
 });

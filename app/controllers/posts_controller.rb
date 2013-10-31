@@ -1,7 +1,11 @@
 class PostsController < ApplicationController
 
   def create
+    @comment_params = params[:post].delete(:comments) || []
+    p "!!!!!!!!!!!!"
     @post = Post.create!(params[:post])
+    @comment_params.each { |comment| @post.comments.build(comment) }
+
     render :json => @post
   end
 
