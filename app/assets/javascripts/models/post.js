@@ -6,7 +6,7 @@ JournalApp.Models.Post = Backbone.Model.extend({
 			this.postComments = new JournalApp.Collections.PostComments([], { post: this });
 		}
 
-		return this.postComments
+		return this.postComments;
 	},
 
 	parse: function(attributes, options){

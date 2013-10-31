@@ -1,21 +1,21 @@
 class PostsController < ApplicationController
 
   def create
-    @comment_params = params[:post].delete(:comments) || []
-    p "!!!!!!!!!!!!"
     @post = Post.create!(params[:post])
-    @comment_params.each { |comment| @post.comments.build(comment) }
 
     render :json => @post
   end
 
   def index
-    @posts = Post.all
-    render :json => @posts
+    @posts = Post.includes(:comments).all
+    render :json => @posts, :include => :comments
   end
 
   def update
+    @comment_params = params[:post].delete(:comments) || []
     @post = Post.find(params[:id])
+    @comment_params.each { |comment| @post.comments.build(comment) }
+
     @post.update_attributes!(params[:post])
     render :json => @post
   end

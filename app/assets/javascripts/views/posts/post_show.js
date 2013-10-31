@@ -14,6 +14,7 @@ JournalApp.Views.PostShow = Backbone.View.extend({
 			post: this.model,
 			postComments: this.model.comments()
 		});
+		console.log(this.model.comments())
 
 		this.$el.html(renderedContent);
 		return this;
