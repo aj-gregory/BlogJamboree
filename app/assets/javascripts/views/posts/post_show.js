@@ -63,7 +63,7 @@ JournalApp.Views.PostShow = Backbone.View.extend({
 		var commentBody = $('.newComment').val();
 		newComment.set({body: commentBody});
 		this.model.postComments.add(newComment);
-		console.log(this.model);
 		this.model.save();
+		this.render();
 	}
 });
