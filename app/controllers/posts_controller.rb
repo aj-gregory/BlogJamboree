@@ -18,7 +18,7 @@ class PostsController < ApplicationController
     @comment_params.each { |comment| @post.comments.build(comment) if !comment[:created_at] }
 
     @post.update_attributes!(params[:post])
-    render :json => @post
+    render :json => @post, :include => :comments
   end
 
   def destroy

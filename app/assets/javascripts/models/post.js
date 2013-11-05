@@ -1,25 +1,24 @@
 JournalApp.Models.Post = Backbone.Model.extend({
   urlRoot:"/posts",
 
-	comments: function() {
+	parse: function(attributes, options){
 		if (!this.postComments) {
-			this.postComments = new JournalApp.Collections.PostComments([], { post: this });
+			this.postComments = new JournalApp.Collections.PostComments([], {post: this});
 		}
 
-		return this.postComments;
-	},
-
-	parse: function(attributes, options){
-		this.comments().reset(attributes.comments);
+		this.postComments.reset(attributes.comments);
 		delete attributes.comments;
 
 		return attributes;
 	},
 
 	toJSON: function() {
-		var json = _.extend({}, this.attributes);
-		json.comments = this.comments().toJSON();
+		if (!this.postComments) {
+			this.postComments = new JournalApp.Collections.PostComments([], {post: this});
+		}
 
+		var json = _.extend({}, this.attributes);
+		json.comments = this.postComments.toJSON();
 		return json;
 	}
 });

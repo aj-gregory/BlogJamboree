@@ -8,6 +8,8 @@ class CommentsController < ApplicationController
 
   def index
     @comments = Comment.where(:post_id => params[:post_id])
+		p "COMMENTS"
+		p @comments
     render :json => @comments
   end
 

@@ -8,7 +8,7 @@ JournalApp.Routers.Posts = Backbone.Router.extend({
   },
 
 	postsIndex: function() {
-    view = new JournalApp.Views.PostsIndex({
+    var view = new JournalApp.Views.PostsIndex({
     	collection: JournalApp.posts
     });
 
@@ -17,31 +17,39 @@ JournalApp.Routers.Posts = Backbone.Router.extend({
 	},
 
 	postShow: function(id) {
-    view = new JournalApp.Views.PostShow({
-    	model: JournalApp.posts.get(id)
+    var view = new JournalApp.Views.PostShow({
+    	model: JournalApp.posts.get(id),
     });
 
-		$('.content').html(view.render().$el);
-		this.postsIndex();
+		this.swapView(view);
 	},
 
 	postEdit: function(id) {
-		view = new JournalApp.Views.PostForm({
+		var view = new JournalApp.Views.PostForm({
 			model: JournalApp.posts.get(id)
 		});
 
-		$('.content').html(view.render().$el);
-		this.postsIndex();
+		this.swapView(view);
 	},
 
 	postNew: function() {
-		model = new JournalApp.Models.Post();
-		view = new JournalApp.Views.PostForm({
+		var model = new JournalApp.Models.Post();
+		var view = new JournalApp.Views.PostForm({
 			model: model,
 			collection: JournalApp.posts
 		});
 
-		$('.content').html(view.render().$el);
+		this.swapView(view, '.content');
+	},
+
+  swapView: function(newView, el) {
+    if(this.lastView){
+      this.lastView.remove();
+    }
+
+    this.lastView = newView;
+
+		$('.content').html(newView.render().$el);
 		this.postsIndex();
-	}
+  }
 });

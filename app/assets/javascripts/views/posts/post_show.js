@@ -1,4 +1,5 @@
 JournalApp.Views.PostShow = Backbone.View.extend({
+
   template: JST['posts/show'],
 
 	events: {
@@ -12,9 +13,8 @@ JournalApp.Views.PostShow = Backbone.View.extend({
 	render: function() {
 		renderedContent = this.template({
 			post: this.model,
-			postComments: this.model.comments()
+			postComments: this.model.postComments
 		});
-		console.log(this.model.comments())
 
 		this.$el.html(renderedContent);
 		return this;
@@ -45,7 +45,7 @@ JournalApp.Views.PostShow = Backbone.View.extend({
 		});
 
 		this.model.save();
-		this.render();
+    $('.title').html(newTitle);
 	},
 
 	updateBody: function(event) {
@@ -55,15 +55,21 @@ JournalApp.Views.PostShow = Backbone.View.extend({
 		});
 
 		this.model.save();
-		this.render();
+    $('.body').html(newBody);
 	},
 
 	addComment: function(event) {
 		var newComment = new JournalApp.Models.Comment();
 		var commentBody = $('.newComment').val();
-		newComment.set({body: commentBody});
+    $('.newComment').html("");
+
+		newComment.set({
+      "body":commentBody
+    });
+
 		this.model.postComments.add(newComment);
 		this.model.save();
-		this.render();
+
+    $('.comments').append('<li>' + newComment.escape('body') + '</li>');
 	}
 });

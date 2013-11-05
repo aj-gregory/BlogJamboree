@@ -4,7 +4,6 @@ window.JournalApp = {
   Views: {},
   Routers: {},
   initialize: function() {
-		//debugger
 		JournalApp.posts = new JournalApp.Collections.Posts();
 		JournalApp.posts.fetch({
 			success: function(){
