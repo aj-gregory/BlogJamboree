@@ -1,4 +1,6 @@
 JournalApp::Application.routes.draw do
+  devise_for :users
+
   get "static_pages/root"
 
   resources :posts, :only => [:create, :index, :update, :destroy] do
