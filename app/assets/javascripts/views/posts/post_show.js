@@ -59,15 +59,22 @@ JournalApp.Views.PostShow = Backbone.View.extend({
 	},
 
   showComments: function(event) {
+    commentTemp = JST['posts/comment_form']
     var that = this;
 
     var postComments = new JournalApp.Collections.PostComments([], {
       post: this.model
     });
 
-    postComments.fetch();
+    postComments.fetch({
+      success: function(data) {
+        postComments.each(function(comment) {
+          $('.modal-body').append('<p>' + comment.escape('body') + '</p>')
+        });
+      }
+    });
 
-    console.log("success")
+    $('.modal-footer').append(commentTemp());
   },
 
 	addComment: function(event) {
