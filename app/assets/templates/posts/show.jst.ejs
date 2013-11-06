@@ -5,4 +5,22 @@
 <br>
 
 <br>
-<a class='addCommentBtn btn btn-sm'>Comments</a>
+<a class='commentsBtn btn btn-sm' data-toggle='modal'
+ data-target='#comments-modal'>Comments</a>
+
+ <!-- Comments Modal -->
+
+<div class='modal fade' id='comments-modal' tabindex="-1" role="dialog"
+ aria-labelledby="comments-modal-label" aria-hidden="true">
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal"
+        aria-hidden="true">&times;</button>
+       <h3 class="modal-title" id="comments-modal-label">Comments</h3>
+     </div>
+     <div class="modal-body">
+     </div>
+   </div>
+ </div>
+</div>

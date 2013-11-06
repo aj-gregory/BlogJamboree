@@ -7,7 +7,7 @@ JournalApp.Views.PostShow = Backbone.View.extend({
 		'dblclick .body':"editBody",
 		'blur .titleEditBox':"updateTitle",
 		'blur .bodyEditBox':"updateBody",
-		'click .addCommentBtn':'addComment'
+		'click .commentsBtn':'showComments'
 	},
 
 	render: function() {
@@ -57,6 +57,18 @@ JournalApp.Views.PostShow = Backbone.View.extend({
 		this.model.save();
     this.$el.children('.body').html(newBody);
 	},
+
+  showComments: function(event) {
+    var that = this;
+
+    var postComments = new JournalApp.Collections.PostComments([], {
+      post: this.model
+    });
+
+    postComments.fetch();
+
+    console.log("success")
+  },
 
 	addComment: function(event) {
 		var newComment = new JournalApp.Models.Comment();
