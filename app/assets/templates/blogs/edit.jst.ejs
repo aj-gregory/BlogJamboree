@@ -1,0 +1,15 @@
+<hr>
+<form>
+  <label for="name">Name</label><br>
+	<input type='text' name='blog[name]' id='name' value='<%= blog.get('name') %>'>
+
+  <br>
+  <label for="description">Description</label><br>
+	<textarea name='blog[description]' id='description' value='<%= blog.get('description') %>'
+	rows='6' cols='39'></textarea>
+
+	<br>
+	<input type="submit" value="Create!">
+</form>
+<br><br>
+<hr>

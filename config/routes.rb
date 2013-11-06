@@ -3,7 +3,11 @@ JournalApp::Application.routes.draw do
 
   get "static_pages/root"
 
-  resources :posts, :only => [:create, :index, :update, :destroy] do
+  resources :blogs, :only => [:create, :index, :update, :destroy] do
+  	resources :posts, :only => [:index, :create]
+  end
+
+  resources :posts, :only => [:update, :destroy] do
     resources :comments, :only => [:index, :create]
   end
 

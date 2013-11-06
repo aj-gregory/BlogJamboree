@@ -1,0 +1,16 @@
+<h1>Blog Index</h1>
+<hr>
+<ul>
+	<% blogs.forEach(function (blog) { %>
+    <li>
+		  <a href=<%= '#/blogs/' + blog.get('id') %>>
+		  <%= blog.escape("name") %>
+			</a>
+			<button class='delete glyphicon glyphicon-trash btn btn-default btn-xs'
+       data-id='<%= blog.get('id') %>'></button>
+		</li>
+	<% }); %>
+	<br><br>
+</ul>
+<hr>
+<a href='#/blogs/new'>New Blog</a>

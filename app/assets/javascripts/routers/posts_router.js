@@ -1,42 +1,42 @@
-JournalApp.Routers.Posts = Backbone.Router.extend({
+JournalApp.Routers.Blogs = Backbone.Router.extend({
 
 	routes: {
-  	"":"postsIndex",
-		"posts/new":"postNew",
-		"posts/:id":"postShow",
-		"posts/:id/edit":"postEdit"
+  	"":"blogsIndex",
+		"blogs/new":"blogNew",
+		"blogs/:id":"blogShow",
+		"blogs/:id/edit":"blogEdit"
   },
 
-	postsIndex: function() {
-    var view = new JournalApp.Views.PostsIndex({
-    	collection: JournalApp.posts
+	blogsIndex: function() {
+    var view = new JournalApp.Views.BlogsIndex({
+    	collection: JournalApp.blogs
     });
 
 		$('.sidebar').html(view.render().$el);
 		//$('.content').empty();
 	},
 
-	postShow: function(id) {
-    var view = new JournalApp.Views.PostShow({
-    	model: JournalApp.posts.get(id),
+	blogShow: function(id) {
+    var view = new JournalApp.Views.BlogShow({
+    	model: JournalApp.blogs.get(id),
     });
 
 		this.swapView(view);
 	},
 
-	postEdit: function(id) {
-		var view = new JournalApp.Views.PostForm({
-			model: JournalApp.posts.get(id)
+	blogEdit: function(id) {
+		var view = new JournalApp.Views.BlogForm({
+			model: JournalApp.blogs.get(id)
 		});
 
 		this.swapView(view);
 	},
 
-	postNew: function() {
-		var model = new JournalApp.Models.Post();
-		var view = new JournalApp.Views.PostForm({
+	blogNew: function() {
+		var model = new JournalApp.Models.Blog();
+		var view = new JournalApp.Views.BlogForm({
 			model: model,
-			collection: JournalApp.posts
+			collection: JournalApp.blogs
 		});
 
 		this.swapView(view, '.content');
@@ -50,6 +50,6 @@ JournalApp.Routers.Posts = Backbone.Router.extend({
     this.lastView = newView;
 
 		$('.content').html(newView.render().$el);
-		this.postsIndex();
+		this.blogsIndex();
   }
 });

@@ -1,4 +1,11 @@
-JournalApp.Collections.Posts = Backbone.Collection.extend({
+JournalApp.Collections.BlogPosts = Backbone.Collection.extend({
   model: JournalApp.Models.Post,
-	url: "/posts"
+
+	initialize: function(models, options){
+    this.blog = options.blog;
+  },
+
+  url: function() {
+    return "/blogs/" + this.blog.id + "/posts";
+  }
 });

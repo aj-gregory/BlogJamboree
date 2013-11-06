@@ -4,10 +4,10 @@ window.JournalApp = {
   Views: {},
   Routers: {},
   initialize: function() {
-		JournalApp.posts = new JournalApp.Collections.Posts();
-		JournalApp.posts.fetch({
+		JournalApp.blogs = new JournalApp.Collections.Blogs();
+		JournalApp.blogs.fetch({
 			success: function(){
-		    new JournalApp.Routers.Posts();
+		    new JournalApp.Routers.Blogs();
 				Backbone.history.start();
 			}
 		})

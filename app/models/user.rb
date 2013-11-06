@@ -6,7 +6,8 @@ class User < ActiveRecord::Base
   attr_accessible :username, :email, :password, :password_confirmation, :remember_me, :login
 	attr_accessor :login
 
-	has_many :posts, :foreign_key => :author_id
+	has_many :posts, :foreign_key => :author_id, :dependent => :destroy
+	has_many :blogs, :dependent => :destroy
 
 	def self.find_first_by_auth_conditions(conditions)
 		conditions_dup = conditions.dup
