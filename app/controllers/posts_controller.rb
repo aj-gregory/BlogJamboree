@@ -1,15 +1,21 @@
 class PostsController < ApplicationController
 
   def create
-    params[:post][:comments] = [];
-    @post = Post.create!(params[:post])
+    params[:post][:comments] = []
+    @post = Post.new(params[:post])
+		@post.author_id = current_user.id
+		@post.save!
 
     render :json => @post
   end
 
   def index
-    @posts = Post.includes(:comments).all
-    render :json => @posts, :include => :comments
+		if user_signed_in?
+	    @posts = Post.includes(:comments).where(:author_id => current_user.id)
+	    render :json => @posts, :include => :comments
+		else
+			head :ok
+		end
   end
 
   def update

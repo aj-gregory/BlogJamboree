@@ -3,4 +3,5 @@ class Post < ActiveRecord::Base
   validates :body, :title, :presence => true
 
   has_many :comments, :dependent => :destroy
+	belongs_to :author, :class_name => "User"
 end
