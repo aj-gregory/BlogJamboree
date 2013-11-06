@@ -6,7 +6,8 @@
 		  <a href=<%= '#/posts/' + post.get('id') %>>
 		  <%= post.get("title") %>
 			</a>
-			<button class='delete' data-id='<%= post.get('id') %>'>Delete</button>
+			<button class='delete glyphicon glyphicon-trash btn btn-default btn-xs'
+       data-id='<%= post.get('id') %>'></button>
 		</li>
 	<% }); %>
 	<br><br>
