@@ -2,11 +2,10 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 body {
-	background-color:beige;
+	background-color:#F7E9CB;
 }
 
 div.sidebar {
-  box-sizing:border-box;
 	border:1px solid black;
 	width:250px;
 	margin-left:30px;
@@ -14,8 +13,7 @@ div.sidebar {
 }
 
 .sidebar h1 {
-	margin-left:30px;
-	margin-right:30px;
+	margin-left:50px;
 }
 
 .content {
@@ -24,5 +22,10 @@ div.sidebar {
 }
 
 hr {
-  border-color:brown;
+  border-top-width:3px;
+  border-color:#754719;
+}
+
+li {
+  list-style-type:none;
 }
