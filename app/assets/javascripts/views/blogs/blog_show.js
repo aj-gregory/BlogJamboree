@@ -60,7 +60,7 @@ JournalApp.Views.BlogShow = Backbone.View.extend({
     $('.name').html(newName);
 	},
 
-	updateBody: function(event) {
+	updateDescription: function(event) {
 		var newDescription = $(event.currentTarget).val();
     this.model.set({
 			"description":newDescription

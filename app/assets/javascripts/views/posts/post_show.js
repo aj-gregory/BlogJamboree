@@ -26,7 +26,7 @@ JournalApp.Views.PostShow = Backbone.View.extend({
 			attr: this.model.get('title')
 		});
 
-		$('.title').html(box);
+		this.$el.children('.title').html(box);
 	},
 
 	editBody: function() {
@@ -35,7 +35,7 @@ JournalApp.Views.PostShow = Backbone.View.extend({
 			attr: this.model.get('body')
 		});
 
-		$('.body').html(box);
+		this.$el.children('.body').html(box);
 	},
 
 	updateTitle: function(event) {
@@ -45,7 +45,7 @@ JournalApp.Views.PostShow = Backbone.View.extend({
 		});
 
 		this.model.save();
-    $('.title').html(newTitle);
+    this.$el.children('.title').html(newTitle);
 	},
 
 	updateBody: function(event) {
@@ -55,7 +55,7 @@ JournalApp.Views.PostShow = Backbone.View.extend({
 		});
 
 		this.model.save();
-    $('.body').html(newBody);
+    this.$el.children('.body').html(newBody);
 	},
 
 	addComment: function(event) {
