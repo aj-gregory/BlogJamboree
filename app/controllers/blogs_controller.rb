@@ -2,7 +2,11 @@ class BlogsController < ApplicationController
 
 	def index
 		if user_signed_in?
-	    @blogs = Blog.includes(:posts).where(:user_id => current_user.id)
+
+	    @blogs = Blog
+			  .includes(:posts)
+				.where(:user_id => current_user.id)
+
 	    render :json => @blogs, :include => :posts
 		else
 			head :ok
@@ -20,7 +24,11 @@ class BlogsController < ApplicationController
 
 	def update
 		@post_params = params[:blog].delete(:posts) || []
-    @blog = Blog.find(params[:id])
+
+    @blog = Blog
+		  .includes(:posts)
+		  .find(params[:id])
+
     @post_params.each { |post| post['comments'] = [] if !post[:created_at] }
     @post_params.each { |post| @blog.posts.build(post) if !post[:created_at] }
 

@@ -5,7 +5,7 @@ JournalApp.Models.Post = Backbone.Model.extend({
 		if (!this.postComments) {
 			this.postComments = new JournalApp.Collections.PostComments([], {post: this});
 		}
-
+    debugger
 		this.postComments.reset(attributes.comments);
 		delete attributes.comments;
 

@@ -11,14 +11,26 @@ JournalApp.Views.BlogShow = Backbone.View.extend({
 	},
 
 	render: function() {
-		renderedContent = this.template({
+    var that = this;
+
+		var renderedContent = this.template({
 			blog: this.model,
 			blogPosts: this.model.blogPosts
 		});
 
-		this.$el.html(renderedContent);
+    this.$el.html(renderedContent);
+
+    this.model.blogPosts.each(function(post) {
+      that.$el.children('.posts').append(that.renderPost(post));
+    });
+
 		return this;
 	},
+
+  renderPost: function(post) {
+    postView = new JournalApp.Views.PostShow({ model: post });
+    return postView.render().$el;
+  },
 
 	editName: function() {
 		var boxTemp = JST['blogs/nameEditBox'];

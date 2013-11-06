@@ -9,3 +9,5 @@ JournalApp.Collections.BlogPosts = Backbone.Collection.extend({
     return "/blogs/" + this.blog.id + "/posts";
   }
 });
+
+

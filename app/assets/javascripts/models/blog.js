@@ -5,7 +5,6 @@ JournalApp.Models.Blog = Backbone.Model.extend({
 		if (!this.blogPosts) {
 			this.blogPosts = new JournalApp.Collections.BlogPosts([], {blog: this});
 		}
-
 		this.blogPosts.reset(attributes.posts);
 		delete attributes.posts;
 
