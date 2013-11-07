@@ -81,15 +81,20 @@ JournalApp.Views.PostShow = Backbone.View.extend({
   },
 
 	addComment: function() {
+    var that = this;
 		var newComment = new JournalApp.Models.Comment();
 		var commentBody = this.$el.find('.commentBox').val();
 
 		newComment.set({
-      "body":commentBody
+      "post_id": this.model.get('id'),
+      "body": commentBody
     });
-    console.log('call')
-    this.model.postComments.add(newComment)
-		this.model.save();
+
+    this.model.postComments.create(newComment, {
+      success: function() {
+        that.showComments();
+      }
+    });
 	},
 
   deletePost: function() {

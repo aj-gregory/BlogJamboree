@@ -22,7 +22,6 @@ JournalApp.Views.CommentsIndex = Backbone.View.extend({
 	deleteComment: function(event) {
 		var commentID = $(event.currentTarget).attr('data-id');
 		var model = this.collection.get(commentID)
-    debugger
 	  model.destroy();
 	}
 });

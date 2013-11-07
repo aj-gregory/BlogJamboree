@@ -13,7 +13,6 @@ JournalApp.Routers.Blogs = Backbone.Router.extend({
     });
 
 		$('.sidebar').html(view.render().$el);
-		//$('.content').empty();
 	},
 
 	blogShow: function(id) {

@@ -11,7 +11,7 @@ JournalApp::Application.routes.draw do
     resources :comments, :only => [:index]
   end
 
-  resources :comments, :only => [:destroy]
+  resources :comments, :only => [:destroy, :create]
 
   root :to => "static_pages#root"
 end

@@ -27,17 +27,17 @@ JournalApp.Views.BlogForm = Backbone.View.extend({
 
     if (!this.model.isNew()){
 			this.model.save({}, {
-	 			success: function () {
+	 			success: function() {
 	 				Backbone.history.navigate("/", { trigger: true });
 	 			}
 			});
     } else {
 			this.collection.create(this.model, {
-	 			success: function () {
+	 			success: function() {
 	 				Backbone.history.navigate("/", { trigger: true });
 	 			},
 
-				error: function () {
+				error: function() {
 					that.collection.remove(this.model);
 				}
 			});
