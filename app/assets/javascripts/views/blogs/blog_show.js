@@ -118,7 +118,8 @@ JournalApp.Views.BlogShow = Backbone.View.extend({
 
         for(var i = 0; i < that.model.followers().length; i++){
           if (that.model.followers()[i] === current_user.id){
-            that.model.followers().splice(i,i);
+            debugger
+            that.model.followers().splice(i, 1);
           }
         };
 
