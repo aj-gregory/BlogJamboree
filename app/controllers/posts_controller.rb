@@ -13,7 +13,7 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
 
 		@comment_params = params[:post].delete(:comments) || []
-		@comment_params.each { |comment| comment.author_id = current_user.id if !comment[:created_at] }
+		@comment_params.each { |comment| comment['author_id'] = current_user.id if !comment[:created_at] }
     @comment_params.each { |comment| @post.comments.build(comment) if !comment[:created_at] }
 
     @post.update_attributes!(params[:post])

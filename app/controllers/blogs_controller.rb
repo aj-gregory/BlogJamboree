@@ -30,6 +30,7 @@ class BlogsController < ApplicationController
 		  .find(params[:id])
 
     @post_params.each { |post| post['comments'] = [] if !post[:created_at] }
+		@post_params.each { |post| post['author_id'] = current_user.id if !post[:created_at] }
     @post_params.each { |post| @blog.posts.build(post) if !post[:created_at] }
 
     @blog.update_attributes!(params[:blog])
