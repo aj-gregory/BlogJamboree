@@ -1,0 +1,10 @@
+<ul>
+	<% comments.forEach(function(comment) { %>
+    <p>
+		  <%= comment.escape('body') %>
+			<a class='delete glyphicon glyphicon-trash btn btn-default btn-xs'
+       data-id='<%= comment.get('id') %>'></a>
+		</p>
+	<% }); %>
+	<br><br>
+</ul>

@@ -23,12 +23,12 @@ class BlogsController < ApplicationController
 	end
 
 	def update
-		@post_params = params[:blog].delete(:posts) || []
 
     @blog = Blog
 		  .includes(:posts)
 		  .find(params[:id])
 
+    @post_params = params[:blog].delete(:posts) || []
     @post_params.each { |post| post['comments'] = [] if !post[:created_at] }
 		@post_params.each { |post| post['author_id'] = current_user.id if !post[:created_at] }
     @post_params.each { |post| @blog.posts.build(post) if !post[:created_at] }

@@ -61,7 +61,7 @@ JournalApp.Views.PostShow = Backbone.View.extend({
 	},
 
   showComments: function() {
-    commentTemp = JST['posts/comment_form']
+    var commentFormTemp = JST['posts/comment_form'];
     var that = this;
 
     this.model.postComments = new JournalApp.Collections.PostComments([], {
@@ -70,14 +70,14 @@ JournalApp.Views.PostShow = Backbone.View.extend({
 
     this.model.postComments.fetch({
       success: function(data) {
-        that.$el.find('.modal-body').empty();
-        that.model.postComments.each(function(comment) {
-          that.$el.find('.modal-body').append('<p>' + comment.escape('body') + '</p>')
+        var commentIndexView = new JournalApp.Views.CommentsIndex({
+          collection: that.model.postComments
         });
+        that.$el.find('.modal-body').html(commentIndexView.render().$el);
       }
     });
 
-    this.$el.find('.modal-footer').html(commentTemp());
+    this.$el.find('.modal-footer').html(commentFormTemp());
   },
 
 	addComment: function() {
@@ -87,11 +87,9 @@ JournalApp.Views.PostShow = Backbone.View.extend({
 		newComment.set({
       "body":commentBody
     });
-
+    console.log('call')
     this.model.postComments.add(newComment)
 		this.model.save();
-
-    this.$el.find('.modal-body').append('<p>' + newComment.escape('body') + '</p>');
 	},
 
   deletePost: function() {

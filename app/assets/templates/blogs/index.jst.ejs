@@ -1,7 +1,7 @@
 <h1>Your Blogs</h1>
 <hr>
 <ul>
-	<% blogs.forEach(function (blog) { %>
+	<% blogs.forEach(function(blog) { %>
     <li>
 		  <a href=<%= '#/blogs/' + blog.get('id') %>>
 		  <%= blog.escape("name") %>
