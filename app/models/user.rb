@@ -17,7 +17,8 @@ class User < ActiveRecord::Base
 
 	has_many :follows,
 	  :foreign_key => :follower_id,
-		:dependent => :destroy
+		:dependent => :destroy,
+		:inverse_of => :follower
 
 	has_many :followed_blogs,
 	  :through => :follows,

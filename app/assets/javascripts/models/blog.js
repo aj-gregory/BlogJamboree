@@ -1,11 +1,28 @@
 JournalApp.Models.Blog = Backbone.Model.extend({
   urlRoot:"/blogs",
 
+  followers: function() {
+    if (!this.followingUsers){
+      this.followingUsers = [];
+    }
+
+    return this.followingUsers;
+  },
+
 	parse: function(attributes, options){
-		if (!this.blogPosts) {
+		var that = this;
+
+    if (!this.blogPosts) {
 			this.blogPosts = new JournalApp.Collections.BlogPosts([], {blog: this});
 		}
 		this.blogPosts.reset(attributes.posts);
+
+    if (attributes.followers){
+      attributes.followers.forEach(function(follower) {
+        that.followers().push(follower.id);
+      });
+    }
+
 		delete attributes.posts;
 
 		return attributes;

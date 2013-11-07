@@ -8,7 +8,8 @@ JournalApp.Views.BlogShow = Backbone.View.extend({
 		'blur .nameEditBox':'updateName',
 		'blur .descriptionEditBox':'updateDescription',
 		'click .addPostBtn':'addPost',
-    'click .followBtn':'followBlog'
+    'click .followBtn':'followBlog',
+    'click .unfollowBtn':'unfollowBlog'
 	},
 
 	render: function() {
@@ -24,7 +25,6 @@ JournalApp.Views.BlogShow = Backbone.View.extend({
     this.model.blogPosts.each(function(post) {
       that.$el.children('.posts').append(that.renderPost(post));
     });
-
 		return this;
 	},
 
@@ -88,11 +88,43 @@ JournalApp.Views.BlogShow = Backbone.View.extend({
 	},
 
   followBlog: function() {
+    var that = this;
+    var current_user = JSON.parse($('#current_user_json').html());
+
     $.ajax ({
       url: "/blogs/" + this.model.get('id') + "/follows",
       type: 'POST',
       success: function(data) {
-        console.log("success", data);
+        that.model.followers().push(current_user.id);
+        $('.followBtn').addClass('unfollowBtn');
+        $('.unfollowBtn').removeClass('followBtn');
+        $('.unfollowBtn').html('Unfollow');
+      }
+    });
+    $('.followBtn').html('Following...')
+  },
+
+  unfollowBlog: function() {
+    var that = this;
+    var current_user = JSON.parse($('#current_user_json').html());
+
+    $.ajax ({
+      url: '/follows/1',
+      type: 'DELETE',
+      data: {
+        blog_id: this.model.get('id')
+      },
+      success: function() {
+
+        for(var i = 0; i < that.model.followers().length; i++){
+          if (that.model.followers()[i] === current_user.id){
+            that.model.followers().splice(i,i);
+          }
+        };
+
+        $('.unfollowBtn').addClass('followBtn');
+        $('.unfollowBtn').removeClass('unfollowBtn');
+        $('.followBtn').html('Follow');
       }
     });
   }

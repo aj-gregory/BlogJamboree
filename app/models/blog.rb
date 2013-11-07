@@ -5,7 +5,8 @@ class Blog < ActiveRecord::Base
   belongs_to :user
 
 	has_many :follows,
-	  :dependent => :destroy
+	  :dependent => :destroy,
+		:inverse_of => :blog
 
 	has_many :followers,
 	  :through => :follows

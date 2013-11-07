@@ -10,8 +10,9 @@ class FollowsController < ApplicationController
 	end
 
 	def destroy
-		@follow = Follow.find(:id)
+		@follow = Follow.find_by_blog_id_and_follower_id(params[:blog_id], current_user.id)
 		@follow.destroy
+		head :ok
 	end
 
 end

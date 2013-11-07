@@ -4,10 +4,11 @@ class BlogsController < ApplicationController
 		if user_signed_in?
 
 	    @blogs = Blog
+			  .includes(:followers)
 			  .includes(:posts)
 				.where(:user_id => current_user.id)
 
-	    render :json => @blogs, :include => :posts
+	    render :json => @blogs, :include => [:followers, :posts]
 		else
 			head :ok
 		end
