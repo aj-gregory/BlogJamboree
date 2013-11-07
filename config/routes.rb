@@ -5,6 +5,7 @@ JournalApp::Application.routes.draw do
 
   resources :blogs, :only => [:create, :index, :update, :destroy] do
   	resources :posts, :only => [:index]
+		resources :follows, :only => [:create]
   end
 
   resources :posts, :only => [:update, :destroy] do
@@ -12,6 +13,7 @@ JournalApp::Application.routes.draw do
   end
 
   resources :comments, :only => [:destroy, :create]
+	resources :follows, :only => [:destroy]
 
   root :to => "static_pages#root"
 end

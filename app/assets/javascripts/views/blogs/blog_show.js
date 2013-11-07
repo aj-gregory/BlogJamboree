@@ -3,11 +3,12 @@ JournalApp.Views.BlogShow = Backbone.View.extend({
   template: JST['blogs/show'],
 
 	events: {
-		'dblclick .name':"editName",
-		'dblclick .description':"editDescription",
-		'blur .nameEditBox':"updateName",
-		'blur .descriptionEditBox':"updateDescription",
-		'click .addPostBtn':'addPost'
+		'dblclick .name':'editName',
+		'dblclick .description':'editDescription',
+		'blur .nameEditBox':'updateName',
+		'blur .descriptionEditBox':'updateDescription',
+		'click .addPostBtn':'addPost',
+    'click .followBtn':'followBlog'
 	},
 
 	render: function() {
@@ -70,7 +71,7 @@ JournalApp.Views.BlogShow = Backbone.View.extend({
     $('.description').html(newDescription);
 	},
 
-	addPost: function(event) {
+	addPost: function() {
 		var newPost = new JournalApp.Models.Post();
 		var postTitle = $('.newPostTitle').val();
 		var postBody = $('.newPostBody').val();
@@ -84,5 +85,15 @@ JournalApp.Views.BlogShow = Backbone.View.extend({
 		this.model.save();
 
     $('.posts').append('<li>' + newPost.escape('title') + '</li>');
-	}
+	},
+
+  followBlog: function() {
+    $.ajax ({
+      url: "/blogs/" + this.model.get('id') + "/follows",
+      type: 'POST',
+      success: function(data) {
+        console.log("success", data);
+      }
+    });
+  }
 });
