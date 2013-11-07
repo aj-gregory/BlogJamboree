@@ -1,7 +1,8 @@
 class CommentsController < ApplicationController
 
   def create
-    @comment = Comment.new(body: params[:comment][:body])
+    @comment = Comment.new(params[:comment])
+		@comment.post_id = params[:post_id]
     @comment.save!
     render :json => @comment
   end

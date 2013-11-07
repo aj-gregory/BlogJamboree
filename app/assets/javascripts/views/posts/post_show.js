@@ -7,7 +7,8 @@ JournalApp.Views.PostShow = Backbone.View.extend({
 		'dblclick .body':"editBody",
 		'blur .titleEditBox':"updateTitle",
 		'blur .bodyEditBox':"updateBody",
-		'click .commentsBtn':'showComments'
+		'click .commentsBtn':'showComments',
+    'click .addCommentBtn':'addComment'
 	},
 
 	render: function() {
@@ -62,33 +63,33 @@ JournalApp.Views.PostShow = Backbone.View.extend({
     commentTemp = JST['posts/comment_form']
     var that = this;
 
-    var postComments = new JournalApp.Collections.PostComments([], {
+    this.model.postComments = new JournalApp.Collections.PostComments([], {
       post: this.model
     });
 
-    postComments.fetch({
+    this.model.postComments.fetch({
       success: function(data) {
-        postComments.each(function(comment) {
-          $('.modal-body').append('<p>' + comment.escape('body') + '</p>')
+        that.$el.find('.modal-body').empty();
+        that.model.postComments.each(function(comment) {
+          that.$el.find('.modal-body').append('<p>' + comment.escape('body') + '</p>')
         });
       }
     });
 
-    $('.modal-footer').append(commentTemp());
+    this.$el.find('.modal-footer').html(commentTemp());
   },
 
 	addComment: function(event) {
 		var newComment = new JournalApp.Models.Comment();
-		var commentBody = $('.newComment').val();
-    $('.newComment').html("");
+		var commentBody = this.$el.find('.commentBox').val();
 
 		newComment.set({
       "body":commentBody
     });
 
-		this.model.postComments.add(newComment);
+    this.model.postComments.add(newComment)
 		this.model.save();
 
-    $('.comments').append('<li>' + newComment.escape('body') + '</li>');
+    this.$el.find('.modal-body').append('<p>' + newComment.escape('body') + '</p>');
 	}
 });

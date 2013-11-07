@@ -1,16 +1,16 @@
-<h3 class='title'><%= post.get('title') %></h3>
+<h3 class='title'><%= post.escape('title') %></h3>
 
-<div class='body'><%= post.get('body') %></div>
+<div class='body'><%= post.escape('body') %></div>
 
 <br>
 
 <br>
 <a class='commentsBtn btn btn-sm' data-toggle='modal'
- data-target='#comments-modal'>Comments</a>
+ data-target='<%= '#comments-modal-' + post.get('id') %>'>Comments</a>
 
  <!-- Comments Modal -->
 
-<div class='modal fade' id='comments-modal' tabindex="-1" role="dialog"
+<div class='modal fade' id='<%= 'comments-modal-' + post.get('id') %>' tabindex="-1" role="dialog"
  aria-labelledby="comments-modal-label" aria-hidden="true">
  <div class="modal-dialog">
    <div class="modal-content">
