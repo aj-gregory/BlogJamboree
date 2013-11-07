@@ -9,18 +9,11 @@ class PostsController < ApplicationController
     render :json => @post
   end
 
-  def index
-		if user_signed_in?
-	    @posts = Post.includes(:comments).where(:author_id => current_user.id)
-	    render :json => @posts, :include => :comments
-		else
-			head :ok
-		end
-  end
-
   def update
-    @comment_params = params[:post].delete(:comments) || []
     @post = Post.find(params[:id])
+
+		@comment_params = params[:post].delete(:comments) || []
+		@comment_params.each { |comment| comment.author_id = current_user.id if !comment[:created_at] }
     @comment_params.each { |comment| @post.comments.build(comment) if !comment[:created_at] }
 
     @post.update_attributes!(params[:post])

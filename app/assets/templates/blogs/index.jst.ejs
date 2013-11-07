@@ -6,8 +6,8 @@
 		  <a href=<%= '#/blogs/' + blog.get('id') %>>
 		  <%= blog.escape("name") %>
 			</a>
-			<button class='delete glyphicon glyphicon-trash btn btn-default btn-xs'
-       data-id='<%= blog.get('id') %>'></button>
+			<a class='delete glyphicon glyphicon-trash btn btn-default btn-xs'
+       data-id='<%= blog.get('id') %>'></a>
 		</li>
 	<% }); %>
 	<br><br>

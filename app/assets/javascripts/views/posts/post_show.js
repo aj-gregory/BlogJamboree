@@ -8,7 +8,8 @@ JournalApp.Views.PostShow = Backbone.View.extend({
 		'blur .titleEditBox':"updateTitle",
 		'blur .bodyEditBox':"updateBody",
 		'click .commentsBtn':'showComments',
-    'click .addCommentBtn':'addComment'
+    'click .addCommentBtn':'addComment',
+    'click .delete':'deletePost'
 	},
 
 	render: function() {
@@ -59,7 +60,7 @@ JournalApp.Views.PostShow = Backbone.View.extend({
     this.$el.children('.body').html(newBody);
 	},
 
-  showComments: function(event) {
+  showComments: function() {
     commentTemp = JST['posts/comment_form']
     var that = this;
 
@@ -79,7 +80,7 @@ JournalApp.Views.PostShow = Backbone.View.extend({
     this.$el.find('.modal-footer').html(commentTemp());
   },
 
-	addComment: function(event) {
+	addComment: function() {
 		var newComment = new JournalApp.Models.Comment();
 		var commentBody = this.$el.find('.commentBox').val();
 
@@ -91,5 +92,10 @@ JournalApp.Views.PostShow = Backbone.View.extend({
 		this.model.save();
 
     this.$el.find('.modal-body').append('<p>' + newComment.escape('body') + '</p>');
-	}
+	},
+
+  deletePost: function() {
+    this.model.destroy();
+    this.$el.empty();
+  }
 });
