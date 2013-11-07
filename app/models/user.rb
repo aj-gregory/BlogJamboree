@@ -8,6 +8,8 @@ class User < ActiveRecord::Base
 
 	has_many :posts, :foreign_key => :author_id, :dependent => :destroy
 	has_many :blogs, :dependent => :destroy
+	has_many :follows, :foreign_key => :follower_id, :dependent => :destroy
+	has_many :followed_blogs, :through => :follows, :source => :blog
 	has_many :comments, :foreign_key => :author_id, :dependent => :destroy
 
 	def self.find_first_by_auth_conditions(conditions)
