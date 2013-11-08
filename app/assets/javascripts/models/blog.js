@@ -9,13 +9,13 @@ JournalApp.Models.Blog = Backbone.Model.extend({
     return this.followingUsers;
   },
 
-	parse: function(attributes, options){
-		var that = this;
+  parse: function(attributes, options){
+    var that = this;
 
     if (!this.blogPosts) {
-			this.blogPosts = new JournalApp.Collections.BlogPosts([], {blog: this});
-		}
-		this.blogPosts.reset(attributes.posts);
+      this.blogPosts = new JournalApp.Collections.BlogPosts([], {blog: this});
+    }
+    this.blogPosts.reset(attributes.posts);
 
     if (attributes.followers){
       attributes.followers.forEach(function(follower) {
@@ -23,18 +23,18 @@ JournalApp.Models.Blog = Backbone.Model.extend({
       });
     }
 
-		delete attributes.posts;
+    delete attributes.posts;
 
-		return attributes;
-	},
+    return attributes;
+  },
 
-	toJSON: function() {
-		if (!this.blogPosts) {
-			this.blogPosts = new JournalApp.Collections.BlogPosts([], {blog: this});
-		}
+  toJSON: function() {
+    if (!this.blogPosts) {
+      this.blogPosts = new JournalApp.Collections.BlogPosts([], {blog: this});
+    }
 
-		var json = _.extend({}, this.attributes);
-		json.posts = this.blogPosts.toJSON();
-		return json;
-	}
+    var json = _.extend({}, this.attributes);
+    json.posts = this.blogPosts.toJSON();
+    return json;
+  }
 });
