@@ -1,4 +1,8 @@
 class BlogsController < ApplicationController
+	include BlogsHelper
+
+	before_filter :authenticate_user!
+	before_filter :dissalow_destroy_others_blog!, :only => [:destroy]
 
 	def index
 		if user_signed_in?
@@ -7,6 +11,8 @@ class BlogsController < ApplicationController
 			  .includes(:followers)
 			  .includes(:posts)
 				.where(:user_id => current_user.id)
+
+			@blogs.concat(current_user.followed_blogs)
 
 	    render :json => @blogs, :include => [:followers, :posts]
 		else

@@ -1,9 +1,10 @@
 <h1 class='name'><%= blog.get('name') %></h1>
 
 <% var current_user = JSON.parse($('#current_user_json').html()); %>
-<% if ($.inArray(current_user.id, blog.followers()) === -1) { %>
+<% if ($.inArray(current_user.id, blog.followers()) === -1
+       && blog.get('user_id') !== current_user.id) { %>
   <a class='followBtn btn btn-xs'>Follow</a>
-<% } else { %>
+<% } else if (blog.get('user_id') !== current_user.id) { %>
   <a class='unfollowBtn btn btn-xs'>Unfollow</a>
 <% } %>
 
