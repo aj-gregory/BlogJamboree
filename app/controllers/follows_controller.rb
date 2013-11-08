@@ -1,5 +1,8 @@
 class FollowsController < ApplicationController
+	include FollowsHelper
+
 	before_filter :authenticate_user!
+  before_filter :dissalow_following_own_blog!
 
 	def create
 		@follow = Follow.new
