@@ -5,8 +5,8 @@ class Post < ActiveRecord::Base
   belongs_to :blog
 
   has_many :comments,
-	  :dependent => :destroy
+    :dependent => :destroy
 
-	belongs_to :author,
-	  :class_name => "User"
+  belongs_to :author,
+    :class_name => "User"
 end
