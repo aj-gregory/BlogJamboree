@@ -135,7 +135,7 @@ JournalApp.Views.BlogShow = Backbone.View.extend({
     });
 
      this.model.blogPosts.add(newPost);
-    this.model.save();
+     this.model.save();
   },
 
   postText: function() {
