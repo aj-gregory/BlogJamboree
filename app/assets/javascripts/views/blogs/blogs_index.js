@@ -10,7 +10,6 @@ JournalApp.Views.BlogsIndex = Backbone.View.extend({
 
 	events: {
     "click .delete":"deleteBlog",
-		"click h1":"indexReturn"
 	},
 
 	render: function() {
@@ -26,11 +25,6 @@ JournalApp.Views.BlogsIndex = Backbone.View.extend({
 		var blogID = $(event.currentTarget).attr('data-id');
 		var model = this.collection.get(blogID)
 		model.destroy();
-	},
-
-	indexReturn: function(event) {
-		$('.content').empty();
-		Backbone.history.navigate("/", {trigger: true});
 	}
 
 });
