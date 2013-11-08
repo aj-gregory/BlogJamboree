@@ -2,7 +2,7 @@ class BlogsController < ApplicationController
 	include BlogsHelper
 
 	before_filter :authenticate_user!
-	before_filter :dissalow_destroy_others_blog!, :only => [:destroy]
+	before_filter :dissalow_alter_others_blog!, :only => [:destroy, :update]
 
 	def index
 		if user_signed_in?
