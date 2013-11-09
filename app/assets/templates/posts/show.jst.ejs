@@ -1,10 +1,16 @@
-<h3 class='title'><%= post.escape('title') %></h3>
+<% if (!post.escape('photo_url')){ %>
+  <h3 class='title'><%= post.escape('title') %></h3>
 
-<div class='body'><%= post.escape('body') %></div>
-
+  <div class='body'><%= post.escape('body') %></div>
+<% } else { %>
+  <div class='body'>
+    <img  src='<%= post.escape('photo_url') %>' width='160' height='160'>
+  </div>
+<% } %>
 <br>
 
 <br>
+
 <a class='commentsBtn btn btn-sm' data-toggle='modal'
  data-target='<%= '#comments-modal-' + post.get('id') %>'>Comments</a>
 <a class='delete glyphicon glyphicon-trash btn btn-default btn-xs'></a>

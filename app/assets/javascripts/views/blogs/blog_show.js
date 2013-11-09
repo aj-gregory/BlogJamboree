@@ -7,11 +7,13 @@ JournalApp.Views.BlogShow = Backbone.View.extend({
     'dblclick .description':'editDescription',
     'blur .nameEditBox':'updateName',
     'blur .descriptionEditBox':'updateDescription',
-    'click .addPostBtn':'addPost',
     'click .followBtn':'followBlog',
     'click .unfollowBtn':'unfollowBlog',
     'click .delete':'deleteBlog',
+    'click .addPostBtn':'addPostText',
     'click .postText':'postText',
+    'click .postPhoto':'choosePhoto',
+    'click .addPhotoBtn':'postPhoto',
     'hidden.bs.modal':'render'
   },
 
@@ -122,7 +124,7 @@ JournalApp.Views.BlogShow = Backbone.View.extend({
     Backbone.history.navigate("/", { trigger: true })
   },
 
-  addPost: function() {
+  addPostText: function() {
     var that = this;
 
     var newPost = new JournalApp.Models.Post();
@@ -142,5 +144,55 @@ JournalApp.Views.BlogShow = Backbone.View.extend({
     var postFormTemp = JST['blogs/text_post'];
 
     $('#post-text-modal .modal-body').html(postFormTemp());
+  },
+
+  choosePhoto: function() {
+    var that = this;
+   filepicker.setKey('AynRnvKa9T6WSrxRv1ExZz');
+
+   $('#post-photo-modal .modal-body').addClass('dropPane');
+   $('.dropPane').html("Drag a photo here!")
+
+    filepicker.makeDropPane($('.dropPane'), {
+      dragEnter: function() {
+        $(".dropPane").html("Drop to upload").css({
+            'backgroundColor': "#E0E0E0",
+        });
+      },
+      dragLeave: function() {
+        $(".dropPane").html("Drag a photo here!").css({
+            'backgroundColor': "#F6F6F6",
+            'border': "1px dashed #666"
+        });
+      },
+      onSuccess: function(data) {
+        $(".dropPane").text("Done, see result below");
+        $(".dropResult").text(data[0].filename);
+        that.photoUrl = data[0].url; 
+      },
+      onError: function(type, message) {
+        $(".dropResult").text('('+type+') '+ message);
+      },
+      onProgress: function(percentage) {
+        $(".dropPane").text("Uploading ("+percentage+"%)");
+      }
+    });
+  },
+
+  postPhoto: function() {
+    var that = this;
+    var newPost = new JournalApp.Models.Post();
+
+    newPost.set({
+      'photo_url': this.photoUrl
+    });
+
+    this.model.blogPosts.add(newPost);
+
+    debugger
+    
+    this.model.save();
   }
+
+
 });

@@ -11,7 +11,7 @@
      btn-default btn-sm' data-toggle='modal' data-target='#post-text-modal'>
     </button>
     <button type='button' class='postPhoto glyphicon glyphicon-picture btn 
-     btn-default btn-sm'></button>  
+     btn-default btn-sm' data-toggle='modal' data-target='#post-photo-modal'></button>  
   </div>
 <% } %>
 
@@ -50,7 +50,28 @@
      <div class="modal-body">
      </div>
      <div class="modal-footer">
-       <button class='addPostBtn' data-dismiss='modal'>Add Post</button>
+       <button class='addPostBtn' data-dismiss='modal'>Post!</button>
+     </div>
+   </div>
+ </div>
+</div>
+
+<!-- Post Photo Modal -->
+
+<div class='modal fade' id='<%= 'post-photo-modal' %>'
+ tabindex="-1" role="dialog" aria-labelledby="post-photo-modal-label" aria-hidden="true">
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal"
+        aria-hidden="true">&times;</button>
+       <h3 class="modal-title" id="post-photo-modal-label">Add a Photo</h3>
+     </div>
+     <div class="modal-body">
+     </div>
+     <div class="modal-footer">
+       <div class='dropResult'></div>
+       <button class='addPhotoBtn' data-dismiss='modal'>Post!</button>
      </div>
    </div>
  </div>
