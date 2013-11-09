@@ -1,45 +1,50 @@
 JournalApp.Routers.Blogs = Backbone.Router.extend({
 
-	routes: {
-  	"":"blogsIndex",
-		"blogs/new":"blogNew",
-		"blogs/:id":"blogShow",
-		"blogs/:id/edit":"blogEdit"
+  routes: {
+    "":"blogsIndex",
+    "blogs/new":"blogNew",
+    "blogs/:id":"blogShow",
+    "blogs/:id/edit":"blogEdit"
   },
 
-	blogsIndex: function() {
+  blogsIndex: function() {
     var view = new JournalApp.Views.BlogsIndex({
-    	collection: JournalApp.blogs
+      collection: JournalApp.blogs
     });
 
-		$('.sidebar').html(view.render().$el);
-	},
+    var firstBlogView = new JournalApp.Views.BlogShow({
+      model: JournalApp.blogs.first()
+    })
 
-	blogShow: function(id) {
+    $('.sidebar').html(view.render().$el);
+    $('.content').html(firstBlogView.render().$el);
+  },
+
+  blogShow: function(id) {
     var view = new JournalApp.Views.BlogShow({
-    	model: JournalApp.blogs.get(id),
+      model: JournalApp.blogs.get(id),
     });
 
-		this.swapView(view);
-	},
+    this.swapView(view);
+  },
 
-	blogEdit: function(id) {
-		var view = new JournalApp.Views.BlogForm({
-			model: JournalApp.blogs.get(id)
-		});
+  blogEdit: function(id) {
+    var view = new JournalApp.Views.BlogForm({
+      model: JournalApp.blogs.get(id)
+    });
 
-		this.swapView(view);
-	},
+    this.swapView(view);
+  },
 
-	blogNew: function() {
-		var model = new JournalApp.Models.Blog();
-		var view = new JournalApp.Views.BlogForm({
-			model: model,
-			collection: JournalApp.blogs
-		});
+  blogNew: function() {
+    var model = new JournalApp.Models.Blog();
+    var view = new JournalApp.Views.BlogForm({
+      model: model,
+      collection: JournalApp.blogs
+    });
 
-		this.swapView(view, '.content');
-	},
+    this.swapView(view, '.content');
+  },
 
   swapView: function(newView, el) {
     if(this.lastView){
@@ -48,7 +53,7 @@ JournalApp.Routers.Blogs = Backbone.Router.extend({
 
     this.lastView = newView;
 
-		$('.content').html(newView.render().$el);
-		this.blogsIndex();
+    this.blogsIndex()
+    $('.content').html(newView.render().$el);
   }
 });
