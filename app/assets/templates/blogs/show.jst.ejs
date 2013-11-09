@@ -1,34 +1,41 @@
 <% var current_user = JSON.parse($('#current_user_json').html()); %>
 
-<h1 class='name'><%= blog.get('name') %></h1>
+<div class="panel panel-default">
+  
+  <div class='panel-heading'>
+    <h1 class='name'><%= blog.get('name') %></h1>
 
+    <% if (current_user.id === blog.get('user_id')) { %>
+      <div class='btn-group'>
+        <a class='delete glyphicon glyphicon-trash btn 
+         btn-default btn-sm'>
+        </a>
+        <a class='postText glyphicon glyphicon-pencil btn 
+         btn-default btn-sm' data-toggle='modal' data-target='#post-text-modal'>
+        </a>
+        <a class='postPhoto glyphicon glyphicon-picture btn 
+         btn-default btn-sm' data-toggle='modal' data-target='#post-photo-modal'>
+        </a>  
+      </div>
+    <% } %>
 
-<% if (current_user.id === blog.get('user_id')) { %>
-  <div class='btn-group'>
-    <button type='button' class='delete glyphicon glyphicon-trash btn 
-     btn-default btn-sm'></button>
-    <button type='button' class='postText glyphicon glyphicon-pencil btn 
-     btn-default btn-sm' data-toggle='modal' data-target='#post-text-modal'>
-    </button>
-    <button type='button' class='postPhoto glyphicon glyphicon-picture btn 
-     btn-default btn-sm' data-toggle='modal' data-target='#post-photo-modal'></button>  
+    <% if ($.inArray(current_user.id, blog.followers()) === -1
+           && blog.get('user_id') !== current_user.id) { %>
+      <a class='followBtn btn btn-xs'>Follow</a>
+    <% } else if (blog.get('user_id') !== current_user.id) { %>
+      <a class='unfollowBtn btn btn-xs'>Unfollow</a>
+    <% } %>
   </div>
-<% } %>
 
-<% if ($.inArray(current_user.id, blog.followers()) === -1
-       && blog.get('user_id') !== current_user.id) { %>
-  <a class='followBtn btn btn-xs'>Follow</a>
-<% } else if (blog.get('user_id') !== current_user.id) { %>
-  <a class='unfollowBtn btn btn-xs'>Unfollow</a>
-<% } %>
+  <div class='description panel-body'>
+    <%= blog.get('description') %>
+  </div>
+
+</div>
+
+<br>
 
 <hr>
-<div class='description'><%= blog.get('description') %></div>
-
-<br><br>
-<hr>
-
-<h2>Posts</h2>
 
 <div class="posts">
 </div>
@@ -50,7 +57,7 @@
      <div class="modal-body">
      </div>
      <div class="modal-footer">
-       <button class='addPostBtn' data-dismiss='modal'>Post!</button>
+       <button class='addPostBtn btn btn-sm btn-default' data-dismiss='modal'>Post!</button>
      </div>
    </div>
  </div>
@@ -71,7 +78,7 @@
      </div>
      <div class="modal-footer">
        <div class='dropResult'></div>
-       <button class='addPhotoBtn' data-dismiss='modal'>Post!</button>
+       <button class='addPhotoBtn btn btn-sm btn-default' data-dismiss='modal'>Post!</button>
      </div>
    </div>
  </div>

@@ -1,31 +1,26 @@
 <% var current_user = JSON.parse($('#current_user_json').html()); %>
 
 <h1>Your Blogs</h1>
-<hr>
-<div>
+<div class='list-group'>
 	<% blogs.forEach(function(blog) { %>
     <% if (blog.get('user_id') === current_user.id) { %>
-      <p>
-  		  <a href=<%= '#/blogs/' + blog.get('id') %>>
-  		  <%= blog.escape("name") %>
-  			</a>
-  		</p>
+		  <a href=<%= '#/blogs/' + blog.get('id') %> class='list-group-item'>
+		  <%= blog.escape("name") %>
+			</a>
     <% } %>
 	<% }); %>
 </div>
-<a href='#/blogs/new' class='btn btn-sm btn-default'>New Blog</a>
+<a href='#/blogs/new' class='btn btn-sm btn-default'>New Blog!</a>
 <hr>
 
 <h1>Followed Blogs</h1>
-<hr>
-<div>
+<div class='list-group'>
   <% blogs.forEach(function(blog) { %>
     <% if (blog.get('user_id') !== current_user.id) { %>
-      <p>
-  		  <a href=<%= '#/blogs/' + blog.get('id') %>>
-  		  <%= blog.escape("name") %>
-  			</a>
-  		</p>
+		  <a href=<%= '#/blogs/' + blog.get('id') %> class='list-group-item'>
+		  <%= blog.escape("name") %>
+			</a>
     <% } %>
   <% }); %>
 </div>
+<a href='#/blogs/new' class='btn btn-sm btn-default'>Find Blogs!</a>

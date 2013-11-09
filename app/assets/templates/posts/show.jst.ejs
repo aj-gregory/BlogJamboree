@@ -1,19 +1,25 @@
-<% if (!post.escape('photo_url')){ %>
-  <h3 class='title'><%= post.escape('title') %></h3>
+<% var current_user = JSON.parse($('#current_user_json').html()); %>
 
-  <div class='body'><%= post.escape('body') %></div>
-<% } else { %>
-  <div class='body'>
-    <img  src='<%= post.escape('photo_url') %>' width='160' height='160'>
+<div class='panel panel-default'>
+
+  <% if (!post.escape('photo_url')){ %>
+    <div class='panel-heading'><h3 class='title'><%= post.escape('title') %></h3></div>
+
+    <div class='body panel-body'><%= post.escape('body').replace(/\n/g, '<br>') %></div>
+  <% } else { %>
+    <div class='body panel-body'><img  src='<%= post.escape('photo_url') %>'></div>
+  <% } %>
+  
+  <div class='panel-footer'>
+    <div class='btn-group'>
+      <% if (post.get('author_id') === current_user.id) { %>  
+        <a class='delete glyphicon glyphicon-trash btn btn-default btn-sm'></a>
+      <% } %>
+      <a class='commentsBtn glyphicon glyphicon-comment btn btn-default btn-sm' data-toggle='modal'
+       data-target='<%= '#comments-modal-' + post.get('id') %>'></a>
+    </div>
   </div>
-<% } %>
-<br>
-
-<br>
-
-<a class='commentsBtn btn btn-sm' data-toggle='modal'
- data-target='<%= '#comments-modal-' + post.get('id') %>'>Comments</a>
-<a class='delete glyphicon glyphicon-trash btn btn-default btn-xs'></a>
+</div>
 
  <!-- Comments Modal -->
 
