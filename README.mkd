@@ -1,0 +1,13 @@
+# Blog Jamboree!
+
+## A tumblr Clone.
+
+My main goal with this project is to make a blogging app  with tumblr as the inspiration.
+I may, however, end up omitting some features or implementing others that are not present in tumblr.
+
+## To do:
+
+* Tag posts
+* Like posts
+* Search blogs
+* Pagination
