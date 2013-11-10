@@ -11,3 +11,5 @@ I may, however, end up omitting some features or implementing others that are no
 * Like posts
 * Search blogs
 * Pagination
+* Edit posts/blogs
+* Search posts by tags
