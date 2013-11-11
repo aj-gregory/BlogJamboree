@@ -13,10 +13,13 @@
   <div class='panel-footer'>
     <div class='btn-group'>
       <% if (post.get('author_id') === current_user.id) { %>  
-        <a class='delete glyphicon glyphicon-trash btn btn-default btn-sm'></a>
+        <a class='delete glyphicon glyphicon-trash btn 
+         btn-default btn-sm'>
+        </a>
       <% } %>
       <a class='commentsBtn glyphicon glyphicon-comment btn btn-default btn-sm' data-toggle='modal'
-       data-target='<%= '#comments-modal-' + post.get('id') %>'></a>
+       data-target='<%= '#comments-modal-' + post.get('id') %>'>
+      </a>
     </div>
   </div>
 </div>

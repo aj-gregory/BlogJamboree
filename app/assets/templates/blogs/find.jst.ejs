@@ -1,5 +1,7 @@
 <% var current_user = JSON.parse($('#current_user_json').html()); %>
 
+<h1>Most Popular Blogs</h1>
+
 <% blogs.forEach( function(blog) { %>
   <% if (blog.get('user_id') != current_user.id) { %>
     <div class="panel panel-default">

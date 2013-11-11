@@ -88,9 +88,10 @@ JournalApp.Views.BlogShow = Backbone.View.extend({
         $('.followBtn').addClass('unfollowBtn');
         $('.unfollowBtn').removeClass('followBtn');
         $('.unfollowBtn').html('Unfollow');
+        $('.followed').append('<a class="list-group-item" href="#/blogs' 
+          + that.model.get('id') +'">' + that.model.escape('name') + '</a>');
       }
     });
-    $('.followBtn').html('Following...')
   },
 
   unfollowBlog: function() {
@@ -114,6 +115,7 @@ JournalApp.Views.BlogShow = Backbone.View.extend({
         $('.unfollowBtn').addClass('followBtn');
         $('.unfollowBtn').removeClass('unfollowBtn');
         $('.followBtn').html('Follow');
+        $('.list-group-item[href="#/blogs'+ that.model.get('id') + '"]').remove();
       }
     });
   },

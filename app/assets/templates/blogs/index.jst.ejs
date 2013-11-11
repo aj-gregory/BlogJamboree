@@ -15,7 +15,7 @@
 
 
 <h1>Followed Blogs</h1>
-<div class='list-group'>
+<div class='followed list-group'>
   <% blogs.forEach(function(blog) { %>
     <% if ($.inArray(current_user.id, blog.followers()) !== -1) { %>
       <a href=<%= '#/blogs/' + blog.get('id') %> class='list-group-item'>
