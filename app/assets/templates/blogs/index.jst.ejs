@@ -13,14 +13,15 @@
 <a href='#/blogs/new' class='btn btn-sm btn-default'>New Blog!</a>
 <hr>
 
+
 <h1>Followed Blogs</h1>
 <div class='list-group'>
   <% blogs.forEach(function(blog) { %>
-    <% if (blog.get('user_id') !== current_user.id) { %>
-		  <a href=<%= '#/blogs/' + blog.get('id') %> class='list-group-item'>
-		  <%= blog.escape("name") %>
-			</a>
+    <% if ($.inArray(current_user.id, blog.followers()) !== -1) { %>
+      <a href=<%= '#/blogs/' + blog.get('id') %> class='list-group-item'>
+      <%= blog.escape("name") %>
+      </a>
     <% } %>
   <% }); %>
 </div>
-<a href='#/blogs/new' class='btn btn-sm btn-default'>Find Blogs!</a>
+<a href='#/blogs/find' class='btn btn-sm btn-default'>Find Blogs!</a>

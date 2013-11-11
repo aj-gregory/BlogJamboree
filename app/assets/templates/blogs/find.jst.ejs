@@ -1,0 +1,19 @@
+<% var current_user = JSON.parse($('#current_user_json').html()); %>
+
+<% blogs.forEach( function(blog) { %>
+  <% if (blog.get('user_id') != current_user.id) { %>
+    <div class="panel panel-default">
+    
+      <div class='panel-heading'>
+        <h1 class='name'><%= blog.escape('name') %></h1>
+
+        <a href='<%= "/#/blogs/" + blog.id %>' class='btn btn-xs'>View</a>
+
+      </div>
+
+      <div class='description panel-body'>
+        <%= blog.escape('description') %>
+      </div>
+    </div>
+  <% } %>
+<% }); %>

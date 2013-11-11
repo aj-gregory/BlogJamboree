@@ -5,18 +5,9 @@ class BlogsController < ApplicationController
   before_filter :dissalow_alter_others_blog!, :only => [:destroy, :update]
 
   def index
-    if user_signed_in?
-      @blogs = Blog
-        .includes(:followers)
-        .includes(:posts)
-        .where(:user_id => current_user.id)
+    @blogs = Blog.includes(:followers).includes(:posts).all
 
-      @blogs.concat(current_user.followed_blogs)
-
-      render :json => @blogs, :include => [:followers, :posts]
-    else
-      head :ok
-    end
+    render :json => @blogs, :include => [:followers, :posts]
   end
 
   def create

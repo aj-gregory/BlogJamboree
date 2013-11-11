@@ -147,7 +147,7 @@ JournalApp.Views.BlogShow = Backbone.View.extend({
   },
 
   choosePhoto: function() {
-    var that = this;
+   var that = this;
    filepicker.setKey('AynRnvKa9T6WSrxRv1ExZz');
 
    $('#post-photo-modal .modal-body').addClass('dropPane');
@@ -166,9 +166,11 @@ JournalApp.Views.BlogShow = Backbone.View.extend({
         });
       },
       onSuccess: function(data) {
-        $(".dropPane").text("Done, see result below");
-        $(".dropResult").text(data[0].filename);
-        that.photoUrl = data[0].url; 
+        that.photoUrl = data[0].url;
+        $(".dropPane").css({
+          'background': 'url(' + that.photoUrl +') no-repeat center'
+        });
+        $(".dropResult").text(data[0].filename); 
       },
       onError: function(type, message) {
         $(".dropResult").text('('+type+') '+ message);
@@ -188,8 +190,6 @@ JournalApp.Views.BlogShow = Backbone.View.extend({
     });
 
     this.model.blogPosts.add(newPost);
-
-    debugger
     
     this.model.save();
   }

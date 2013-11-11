@@ -3,8 +3,9 @@ JournalApp.Routers.Blogs = Backbone.Router.extend({
   routes: {
     "":"blogsIndex",
     "blogs/new":"blogNew",
+    "blogs/find":"blogsFind",
     "blogs/:id":"blogShow",
-    "blogs/:id/edit":"blogEdit"
+    "blogs/:id/edit":"blogEdit",
   },
 
   blogsIndex: function() {
@@ -12,12 +13,7 @@ JournalApp.Routers.Blogs = Backbone.Router.extend({
       collection: JournalApp.blogs
     });
 
-    var firstBlogView = new JournalApp.Views.BlogShow({
-      model: JournalApp.blogs.first()
-    })
-
     $('.sidebar').html(view.render().$el);
-    $('.content').html(firstBlogView.render().$el);
   },
 
   blogShow: function(id) {
@@ -40,6 +36,14 @@ JournalApp.Routers.Blogs = Backbone.Router.extend({
     var model = new JournalApp.Models.Blog();
     var view = new JournalApp.Views.BlogForm({
       model: model,
+      collection: JournalApp.blogs
+    });
+
+    this.swapView(view, '.content');
+  },
+
+  blogsFind: function() {
+    var view = new JournalApp.Views.BlogsFind({
       collection: JournalApp.blogs
     });
 

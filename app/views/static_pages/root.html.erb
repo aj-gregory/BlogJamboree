@@ -1,6 +1,25 @@
-<div class='container well'>
+<% if user_signed_in? %>
   <div class='row'>
-    <div class='content col-md-8'></div>
+    <div class='content col-md-8'>
+      <!-- <img src='/assets/BLOGJamboree!.png' style="float:center;"><br>
+      <a href='/users/sign_up'>Try it out as a guest!</a>  -->
+    </div>
     <div class='sidebar col-md-4'></div>
   </div>
-</div>
+<% else %>
+  <div class='row'>
+    <div class='col-md-4'></div>
+    <div class='col-md-4'>
+      <img src='/assets/BLOGJamboree!.png'><br>
+    </div>
+    <div class='col-md-4'></div>
+  </div>
+
+  <div class='row'>
+    <div class='col-md-4'></div>
+    <div class='col-md-4' style='margin-left:110px; font-size:32pt;'>
+      <a href='/users/sign_up'>Try it out!</a> 
+    </div>
+    <div class='col-md-4'></div>
+  </div>
+<% end %>
