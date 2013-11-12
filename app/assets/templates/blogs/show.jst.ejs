@@ -8,13 +8,13 @@
     <% if (current_user.id === blog.get('user_id')) { %>
       <div class='btn-group'>
         <a class='delete glyphicon glyphicon-trash btn 
-         btn-default btn-sm'>
+         btn-default btn-sm' title='delete blog'>
         </a>
         <a class='postText glyphicon glyphicon-pencil btn 
-         btn-default btn-sm' data-toggle='modal' data-target='#post-text-modal'>
+         btn-default btn-sm' data-toggle='modal' data-target='#post-text-modal' title='write a post'>
         </a>
         <a class='postPhoto glyphicon glyphicon-picture btn 
-         btn-default btn-sm' data-toggle='modal' data-target='#post-photo-modal'>
+         btn-default btn-sm' data-toggle='modal' data-target='#post-photo-modal' title='post a photo'>
         </a>  
       </div>
     <% } %>

@@ -14,12 +14,13 @@
     <div class='btn-group'>
       <% if (post.get('author_id') === current_user.id) { %>  
         <a class='delete glyphicon glyphicon-trash btn 
-         btn-default btn-sm'>
+         btn-default btn-sm' title='delete post'>
         </a>
       <% } %>
       <a class='commentsBtn glyphicon glyphicon-comment btn btn-default btn-sm' data-toggle='modal'
-       data-target='<%= '#comments-modal-' + post.get('id') %>'>
-      <a class='tagBtn glyphicon glyphicon-tags btn btn-default btn-sm'>
+       data-target='<%= '#comments-modal-' + post.get('id') %>' title='comments'>
+      </a>
+      <a class='tagBtn glyphicon glyphicon-tags btn btn-default btn-sm' title='tags'>
       </a>
     </div>
   </div>
