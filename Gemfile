@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 
 gem 'backbone-on-rails'
 gem 'devise'
+gem 'faker'
 gem 'figaro'
 gem 'filepicker-rails'
 gem 'jquery-rails'

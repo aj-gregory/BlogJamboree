@@ -7,7 +7,7 @@ I may, however, end up omitting some features or implementing others that are no
 
 ## To do:
 
-* Guest account
+* Seed data
 * ReBlog
 * Fix tag button bug (opening tags on a post while other post has tags open)
 * Make comments display author's username

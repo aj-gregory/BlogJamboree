@@ -13,22 +13,41 @@
  */
 
 textarea {
-  resize:none;
-  border:1px solid #cccccc;
-  border-radius:5px;
+  resize: none;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
 }
 
 input[type=text] {
-  border:1px solid #cccccc;
-  border-radius:5px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
 }
 
 input[type=password] {
-  border:1px solid #cccccc;
-  border-radius:5px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
 }
 
 input[type=email] {
-  border:1px solid #cccccc;
-  border-radius:5px;
+  border: 1px solid #cccccc;
+  border-radius: 5px;
+}
+
+div.or {
+  color: #cccccc;
+  font-size: 52px;
+  font-style: italic;
+  text-align: center;
+  line-height: 300px;
+}
+
+div.demoInvite {
+  text-align: center;
+  line-height: 300px;
+}
+
+div.demoInvite a {
+  background-color: #289fc7;
+  color: white;
+  border: 1px solid #cccccc;
 }
