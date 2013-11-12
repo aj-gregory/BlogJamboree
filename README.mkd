@@ -7,10 +7,9 @@ I may, however, end up omitting some features or implementing others that are no
 
 ## To do:
 
-* Tag posts
-* Search posts by tags
 * Remove fancy edit code on posts
 * Guest account
+* ReBlog
 * Make comments display author's username
 * Better search for blogs
 * Pagination

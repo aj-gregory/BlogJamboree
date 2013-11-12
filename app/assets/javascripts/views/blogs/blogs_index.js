@@ -8,6 +8,10 @@ JournalApp.Views.BlogsIndex = Backbone.View.extend({
     this.listenTo(this.collection, 'reset', this.render);
   },
 
+  events: {
+    'submit':'searchPosts'
+  },
+
   render: function() {
     renderedContent = this.template({
       blogs: this.collection
@@ -15,6 +19,11 @@ JournalApp.Views.BlogsIndex = Backbone.View.extend({
 
     this.$el.html(renderedContent);
     return this;
+  },
+
+  searchPosts: function() {
+    var searchTerm = $('.searchBar').val();
+    Backbone.history.navigate('tags/' + searchTerm, {trigger: true});
   }
 
 });

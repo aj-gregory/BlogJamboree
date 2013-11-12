@@ -61,20 +61,21 @@ JournalApp.Routers.Blogs = Backbone.Router.extend({
         data.each(function(post) {
           if (post.postTags){
             post.postTags.forEach(function(postTag){
-              if (tag === postTag){
+              if (tag.toLowerCase() === postTag.toLowerCase()){
                 taggedPosts.add(post);
               }
             });
           }
         });
-        that.searchResult(taggedPosts);
+        that.searchResult(taggedPosts, tag);
       }
     });
   },
 
-  searchResult: function(taggedPosts) {
+  searchResult: function(taggedPosts, tag) {
     var view = new JournalApp.Views.SearchShow({
-      collection: taggedPosts
+      collection: taggedPosts,
+      tagName: tag
     });
 
     this.swapView(view);

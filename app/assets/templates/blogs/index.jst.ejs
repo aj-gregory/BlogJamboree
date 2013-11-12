@@ -1,5 +1,10 @@
 <% var current_user = JSON.parse($('#current_user_json').html()); %>
 
+<form>
+<input type='text' class='searchBar'>
+<input type='submit' class='searchBtn btn btn-default btn-sm' value='Search'>
+</form>
+
 <h1>Your Blogs</h1>
 <div class='list-group'>
 	<% blogs.forEach(function(blog) { %>

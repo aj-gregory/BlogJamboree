@@ -3,7 +3,7 @@ JournalApp.Views.SearchShow = Backbone.View.extend({
 
   render: function() {
     var that = this;
-    var renderedContent = this.template();
+    var renderedContent = this.template({ tag: this.tagName });
 
     this.$el.html(renderedContent);
 
