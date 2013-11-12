@@ -8,8 +8,10 @@ I may, however, end up omitting some features or implementing others that are no
 ## To do:
 
 * Tag posts
-* Like posts
-* Search blogs
-* Pagination
-* Edit posts/blogs
 * Search posts by tags
+* Guest account
+* Make comments display author's username
+* Better search for blogs
+* Pagination
+* Like posts
+* Edit posts/blogs

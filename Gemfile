@@ -21,6 +21,3 @@ group :development do
 	gem 'binding_of_caller'
 	gem 'rails-erd'
 end
-
-# To use debugger
-# gem 'debugger'

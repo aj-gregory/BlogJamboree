@@ -1,9 +1,14 @@
+<% var current_user = JSON.parse($('#current_user_json').html()); %>
+
 <ul>
 	<% comments.forEach(function(comment) { %>
     <p>
 		  <%= comment.escape('body') %>
-			<a class='delete glyphicon glyphicon-trash btn btn-default btn-xs'
-       data-id='<%= comment.get('id') %>'></a>
+      <% if (comment.get('author_id') === current_user.id) { %>
+  			<a class='delete glyphicon glyphicon-trash btn btn-default btn-xs'
+         data-id='<%= comment.get('id') %>'>
+        </a>
+      <% } %>
 		</p>
 	<% }); %>
 	<br><br>
