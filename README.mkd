@@ -7,10 +7,11 @@ I may, however, end up omitting some features or implementing others that are no
 
 ## To do:
 
-* Remove fancy edit code on posts
 * Guest account
 * ReBlog
+* Fix tag button bug (opening tags on a post while other post has tags open)
 * Make comments display author's username
+* Make buttons submit correctly where applicable
 * Better search for blogs
 * Pagination
 * Like posts
