@@ -6,6 +6,7 @@ JournalApp.Routers.Blogs = Backbone.Router.extend({
     "blogs/find":"blogsFind",
     "blogs/:id":"blogShow",
     "blogs/:id/edit":"blogEdit",
+    "tags/:tag":"findByTag"
   },
 
   blogsIndex: function() {
@@ -48,6 +49,35 @@ JournalApp.Routers.Blogs = Backbone.Router.extend({
     });
 
     this.swapView(view, '.content');
+  },
+
+  findByTag: function(tag) {
+    var that = this;
+    var allPosts = new JournalApp.Collections.BlogPosts([], {blog: new JournalApp.Models.Blog()});
+
+    allPosts.fetch({
+      success: function(data){
+        var taggedPosts = new JournalApp.Collections.BlogPosts([], {blog: new JournalApp.Models.Blog()});
+        data.each(function(post) {
+          if (post.postTags){
+            post.postTags.forEach(function(postTag){
+              if (tag === postTag){
+                taggedPosts.add(post);
+              }
+            });
+          }
+        });
+        that.searchResult(taggedPosts);
+      }
+    });
+  },
+
+  searchResult: function(taggedPosts) {
+    var view = new JournalApp.Views.SearchShow({
+      collection: taggedPosts
+    });
+
+    this.swapView(view);
   },
 
   swapView: function(newView, el) {

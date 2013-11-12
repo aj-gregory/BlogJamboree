@@ -9,6 +9,7 @@ I may, however, end up omitting some features or implementing others that are no
 
 * Tag posts
 * Search posts by tags
+* Remove fancy edit code on posts
 * Guest account
 * Make comments display author's username
 * Better search for blogs

@@ -9,6 +9,18 @@ JournalApp.Models.Post = Backbone.Model.extend({
     return this.postTags;
   },
 
+  parse: function(attributes, options){
+    var that = this;
+
+    if (attributes.tags){
+      attributes.tags.forEach(function(tag) {
+        that.tags().push(tag.body);
+      });
+    }
+
+    return attributes;
+  },
+
   toJSON: function() {
     if (!this.postComments) {
       this.postComments = new JournalApp.Collections.PostComments([], {post: this});

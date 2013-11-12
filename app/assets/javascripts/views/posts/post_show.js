@@ -116,7 +116,7 @@ JournalApp.Views.PostShow = Backbone.View.extend({
           that.$el.find('.panel-footer').append("<div class='tags remove'></div>")
        
           that.model.tags().forEach(function(tag) {
-            that.$el.find('.tags').append("<br><a>" + tag +"</a>"); 
+            that.$el.find('.tags').append("<br><a href='#/tags/" + tag + "'>" + tag +"</a>"); 
           });
 
           that.$el.find('.panel-footer').append(
@@ -141,7 +141,7 @@ JournalApp.Views.PostShow = Backbone.View.extend({
       },
       success: function() {
         that.model.tags().push(newTag);
-        that.$el.find('.tags').append("<br><a>" + newTag +"</a>");
+        that.$el.find('.tags').append("<br><a href='#/tags/" + newTag + "'>" + newTag +"</a>");
       }
     });
   },

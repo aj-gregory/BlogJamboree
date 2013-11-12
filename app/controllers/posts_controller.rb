@@ -1,6 +1,11 @@
 class PostsController < ApplicationController
   before_filter :authenticate_user!
 
+  def index
+    @posts = Post.includes(:tags).all
+    render :json => @posts, :include => :tags
+  end
+
   def update
     @post = Post.find(params[:id])
 
