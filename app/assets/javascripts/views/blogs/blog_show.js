@@ -194,9 +194,11 @@ JournalApp.Views.BlogShow = Backbone.View.extend({
       'photo_url': this.photoUrl
     });
 
-    this.model.blogPosts.add(newPost);
-    
-    this.model.save();
+    this.model.blogPosts.create(newPost, {
+      error: function() {
+         that.model.blogPosts.remove(newPost);
+       }
+    });
   }
 
 

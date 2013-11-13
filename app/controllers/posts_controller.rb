@@ -11,6 +11,7 @@ class PostsController < ApplicationController
     @post.title = params[:title]
     @post.body = params[:body]
     @post.blog_id = params[:blog_id]
+    @post.photo_url = params[:photo_url]
     @post.author_id = current_user.id
 
     @post.save!
