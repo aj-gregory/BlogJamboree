@@ -5,7 +5,7 @@
 <input type='submit' class='searchBtn btn btn-default btn-sm' value='Search'>
 </form>
 
-<h1>Your Blogs</h1>
+<h2>Your Blogs</h2>
 <div class='list-group'>
 	<% blogs.forEach(function(blog) { %>
     <% if (blog.get('user_id') === current_user.id) { %>
@@ -19,7 +19,7 @@
 <hr>
 
 
-<h1>Followed Blogs</h1>
+<h2>Followed Blogs</h2>
 <div class='followed list-group'>
   <% blogs.forEach(function(blog) { %>
     <% if ($.inArray(current_user.id, blog.followers()) !== -1) { %>

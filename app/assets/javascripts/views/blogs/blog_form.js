@@ -38,6 +38,7 @@ JournalApp.Views.BlogForm = Backbone.View.extend({
         },
 
         error: function() {
+          $('.errors').fadeIn();
           that.collection.remove(this.model);
         }
       });
