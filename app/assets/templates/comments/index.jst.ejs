@@ -5,8 +5,7 @@
     <p>
 		  -<%= comment.escape('body') %>
       <% if (comment.get('author_id') === current_user.id) { %>
-  			<a class='delete btn-xs'
-         data-id='<%= comment.get('id') %>' title='delete comment'>
+  			<a class='delete btn btn-xs' data-id='<%= comment.get('id') %>' title='delete comment'>
          Remove
         </a>
       <% } %>
