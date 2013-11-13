@@ -1,5 +1,7 @@
 JournalApp.Models.Post = Backbone.Model.extend({
-  urlRoot:"/posts",
+  urlRoot: function() {
+    return "/blogs/" + this.get('blog_id') + "/posts" 
+  },
 
   tags: function() {
     if (!this.postTags){

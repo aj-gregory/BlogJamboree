@@ -128,18 +128,21 @@ JournalApp.Views.BlogShow = Backbone.View.extend({
 
   addPostText: function() {
     var that = this;
-
-    var newPost = new JournalApp.Models.Post();
+    var newPost = new JournalApp.Models.Post()
     var postTitle = $('#newPostTitle').val();
     var postBody = $('#newPostBody').val();
 
     newPost.set({
       "title": postTitle,
-      "body": postBody
-    });
+       "body": postBody,
+       "blog_id": this.model.get('id')
+    })
 
-     this.model.blogPosts.add(newPost);
-     this.model.save();
+     this.model.blogPosts.create(newPost, {
+       error: function() {
+         that.model.blogPosts.remove(newPost);
+       }
+     });
   },
 
   postText: function() {

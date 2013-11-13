@@ -6,6 +6,17 @@ class PostsController < ApplicationController
     render :json => @posts, :include => :tags
   end
 
+  def create
+    @post = Post.new
+    @post.title = params[:title]
+    @post.body = params[:body]
+    @post.blog_id = params[:blog_id]
+    @post.author_id = current_user.id
+
+    @post.save!
+    render :json => @post
+  end
+
   def update
     @post = Post.find(params[:id])
 
