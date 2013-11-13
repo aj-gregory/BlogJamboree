@@ -9,6 +9,7 @@ I may, however, end up omitting some features or implementing others that are no
 
 * ReBlog
 * Make comments display author's username
+* Display errors
 * Make buttons submit correctly where applicable
 * Make forms redirect to appropriate pages on submission
 * Better search for blogs

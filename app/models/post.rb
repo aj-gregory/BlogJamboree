@@ -3,7 +3,7 @@ class Post < ActiveRecord::Base
   validates :blog_id, :author_id, :presence => true
 
   before_validation :check_photo
-  # validates :body, :title, { :if => photo_url.blank? }
+  #validates :body, :title, :presence => true
 
   belongs_to :blog
 
