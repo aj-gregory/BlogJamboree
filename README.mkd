@@ -11,7 +11,6 @@ I may, however, end up omitting some features or implementing others that are no
 
 * ReBlog
 * Make comments display author's username
-* Display errors
 * Better search for blogs
 * Pagination
 * Like posts
