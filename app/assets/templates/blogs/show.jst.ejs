@@ -55,9 +55,12 @@
        <h3 class="modal-title" id="post-text-modal-label">Write a Post</h3>
      </div>
      <div class="modal-body">
+       <div class='errors' style='display:none; color:red;'>
+          Your post must have a title and a body
+       </div>
      </div>
      <div class="modal-footer">
-       <button class='addPostBtn btn btn-sm btn-default' data-dismiss='modal'>Post!</button>
+       <button class='addPostBtn btn btn-sm btn-default'>Post!</button>
      </div>
    </div>
  </div>
@@ -75,10 +78,14 @@
        <h3 class="modal-title" id="post-photo-modal-label">Add a Photo</h3>
      </div>
      <div class="modal-body">
+       <div class='errors' style='display:none; color:red;'>
+          No file selected
+       </div>
+       <div class='dropPane'></div>
      </div>
      <div class="modal-footer">
        <div class='dropResult'></div>
-       <button class='addPhotoBtn btn btn-sm btn-default' data-dismiss='modal'>Post!</button>
+       <button class='addPhotoBtn btn btn-sm btn-default'>Post!</button>
      </div>
    </div>
  </div>
