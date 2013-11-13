@@ -21,13 +21,16 @@
 
   <div class='container well'>
     <div class='row'>
-      <div class='topbar col-md-12'>
+      <div class='logo col-md-1'>
+        <img src='/assets/J!.png'>
+      </div>
+      <div class='topbar col-md-11'>
         <p class="notice"><%= notice %></p>
         <p class="alert"><%= alert %></p>
 
         <% if user_signed_in? %>
            Welcome, <%= current_user.username %><br>
-           <%= link_to("Sign Out", destroy_user_session_url, :method => :delete)%><br>
+           <%= link_to("Sign Out", destroy_user_session_url, :method => :delete)%><br><br>
         <% else %>
           <%= link_to("Sign In", new_user_session_url)%><br>
           <%= link_to("Sign Up", new_user_registration_url)%><br>
