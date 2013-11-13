@@ -10,7 +10,8 @@ class Post < ActiveRecord::Base
   has_many :comments,
     :dependent => :destroy
 
-  has_many :tags
+  has_many :tags,
+    :dependent => :destroy
 
   belongs_to :author,
     :class_name => "User"

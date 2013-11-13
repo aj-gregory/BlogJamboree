@@ -60,7 +60,7 @@ JournalApp.Views.PostShow = Backbone.View.extend({
   tagPost: function() {
     var that = this;
     
-    if ($('.tags').length < 1){
+    if (that.$el.find('.tags').length < 1){
       $.ajax ({
         url: "/posts/" + this.model.get('id') + "/tags",
         type: 'GET',
@@ -71,19 +71,23 @@ JournalApp.Views.PostShow = Backbone.View.extend({
             }
           });
 
-          that.$el.find('.panel-footer').append("<div class='tags remove'></div>")
+          that.$el.find('.panel-footer').append("<div class='tagsField' style='display:none;'><div class='tags'></div></div>")
        
           that.model.tags().forEach(function(tag) {
             that.$el.find('.tags').append("<br><a href='#/tags/" + tag + "'>" + tag +"</a>"); 
           });
 
-          that.$el.find('.panel-footer').append(
-            "<br class='remove'><input type='text' class='newTag remove'><a class='addTag remove glyphicon glyphicon-tag btn btn-default btn-sm'> </a>"
+          that.$el.find('.tagsField').append(
+            "<br><input type='text' class='newTag'><a class='addTag glyphicon glyphicon-tag btn btn-default btn-sm'> </a>"
           );
+
+          that.$el.find('.tagsField').slideToggle();
         }
       });
     } else {
-      $('.remove').remove();
+      that.$el.find('.tagsField').slideToggle('default', function() {
+        that.$el.find('.tagsField').remove();
+      });
     }
   },
 

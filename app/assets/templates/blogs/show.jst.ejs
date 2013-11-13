@@ -3,7 +3,7 @@
 <div class="panel panel-default">
   
   <div class='panel-heading'>
-    <h1 class='name'><%= blog.get('name') %></h1>
+    <h1 class='name'><%= blog.escape('name') %></h1>
 
     <% if (current_user.id === blog.get('user_id')) { %>
       <div class='btn-group'>
@@ -28,7 +28,7 @@
   </div>
 
   <div class='description panel-body'>
-    <%= blog.get('description') %>
+    <%= blog.escape('description') %>
   </div>
 
 </div>
