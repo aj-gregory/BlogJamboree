@@ -15,4 +15,4 @@ I may, however, end up omitting some features or implementing others that are no
 * Better search for blogs
 * Pagination
 * Like posts
-* Edit posts/blogs
+* Edit posts

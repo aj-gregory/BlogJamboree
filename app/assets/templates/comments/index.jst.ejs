@@ -3,10 +3,11 @@
 <ul>
 	<% comments.forEach(function(comment) { %>
     <p>
-		  <%= comment.escape('body') %>
+		  -<%= comment.escape('body') %>
       <% if (comment.get('author_id') === current_user.id) { %>
-  			<a class='delete glyphicon glyphicon-trash btn btn-default btn-xs'
+  			<a class='delete btn-xs'
          data-id='<%= comment.get('id') %>' title='delete comment'>
+         Remove
         </a>
       <% } %>
 		</p>

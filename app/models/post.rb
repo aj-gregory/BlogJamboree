@@ -1,9 +1,9 @@
 class Post < ActiveRecord::Base
   attr_accessible :body, :title, :comments, :blog_id, :author_id, :photo_url
-  validates :blog_id, :author_id, :presence => true
 
   before_validation :check_photo
-  #validates :body, :title, :presence => true
+
+  validates :blog_id, :author_id, :body, :title, :presence => true
 
   belongs_to :blog
 
@@ -18,8 +18,8 @@ class Post < ActiveRecord::Base
 
   def check_photo
     if self.photo_url
-      self.title = ""
-      self.body = ""
+      self.title = "photo"
+      self.body = "photo"
     end
   end
 end
