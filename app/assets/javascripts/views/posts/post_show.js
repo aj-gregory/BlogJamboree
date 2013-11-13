@@ -78,7 +78,7 @@ JournalApp.Views.PostShow = Backbone.View.extend({
           });
 
           that.$el.find('.tagsField').append(
-            "<br><input type='text' class='newTag'><a class='addTag glyphicon glyphicon-tag btn btn-default btn-sm'> </a>"
+            "<br><form><input type='text' class='newTag'><button type='submit' class='addTag btn btn-default btn-sm'>Add Tag</button></form>"
           );
 
           that.$el.find('.tagsField').slideToggle();
@@ -94,6 +94,7 @@ JournalApp.Views.PostShow = Backbone.View.extend({
   addTag: function() {
     var that = this;
     var newTag = $('.newTag').val();
+    this.$el.find('.newTag').val('');
 
     $.ajax ({
       url: "/posts/" + this.model.get('id') + "/tags",
