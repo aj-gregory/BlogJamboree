@@ -14,11 +14,13 @@ JournalApp.Views.BlogShow = Backbone.View.extend({
     'click .postText':'postText',
     'click .postPhoto':'choosePhoto',
     'click .addPhotoBtn':'postPhoto',
-    'hidden.bs.modal':'render'
+    'hidden.bs.modal #post-text-modal':'render',
+    'hidden.bs.modal #post-photo-modal':'render'
   },
 
   render: function() {
     var that = this;
+    $('.panel').empty();
 
     var renderedContent = this.template({
       blog: this.model,
@@ -121,9 +123,11 @@ JournalApp.Views.BlogShow = Backbone.View.extend({
   },
 
   deleteBlog: function() {
+    $('.panel').remove();
+    $('.content hr').remove();
     this.model.destroy();
-    $('.content').empty();
-    Backbone.history.navigate("/", { trigger: true })
+    this.$el.find('#confirm-delete-modal').modal('hide');
+    Backbone.history.navigate("/", { trigger: true });
   },
 
   addPostText: function() {

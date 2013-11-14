@@ -7,8 +7,8 @@
 
     <% if (current_user.id === blog.get('user_id')) { %>
       <div class='btn-group'>
-        <a class='delete glyphicon glyphicon-trash btn 
-         btn-default btn-sm' title='delete blog'>
+        <a class='glyphicon glyphicon-trash btn 
+         btn-default btn-sm' data-toggle='modal' data-target='#confirm-delete-modal' title='delete blog'>
         </a>
         <a class='postText glyphicon glyphicon-pencil btn 
          btn-default btn-sm' data-toggle='modal' data-target='#post-text-modal' title='write a post'>
@@ -45,7 +45,7 @@
 
 <!-- Post Text Modal -->
 
-<div class='modal fade' id='<%= 'post-text-modal' %>'
+<div class='modal fade' id='post-text-modal'
  tabindex="-1" role="dialog" aria-labelledby="post-text-modal-label" aria-hidden="true">
  <div class="modal-dialog">
    <div class="modal-content">
@@ -68,7 +68,7 @@
 
 <!-- Post Photo Modal -->
 
-<div class='modal fade' id='<%= 'post-photo-modal' %>'
+<div class='modal fade' id='post-photo-modal'
  tabindex="-1" role="dialog" aria-labelledby="post-photo-modal-label" aria-hidden="true">
  <div class="modal-dialog">
    <div class="modal-content">
@@ -86,6 +86,21 @@
      <div class="modal-footer">
        <div class='dropResult'></div>
        <button class='addPhotoBtn btn btn-sm btn-default'>Post!</button>
+     </div>
+   </div>
+ </div>
+</div>
+
+<!-- Confirm Delete Modal -->
+
+<div class='modal fade' id='confirm-delete-modal'
+ tabindex="-1" role="dialog" aria-labelledby="post-photo-modal-label" aria-hidden="true">
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class='modal-body'>
+       <h2>Are you sure you want to delete this blog?</h2><br>
+       <button class='btn btn-lg btn-default' data-dismiss='modal'>Cancel</button>
+       <button class='delete btn btn-lg btn-danger'>Delete</button>
      </div>
    </div>
  </div>
