@@ -5,7 +5,7 @@ JournalApp.Views.PostShow = Backbone.View.extend({
   events: {
     'click .commentsBtn':'showComments',
     'click .addCommentBtn':'addComment',
-    'click .delete':'deletePost',
+    'click .deletePost':'deletePost',
     'click .tagBtn':'tagPost',
     'click .addTag':'addTag'
   },
@@ -111,6 +111,6 @@ JournalApp.Views.PostShow = Backbone.View.extend({
 
   deletePost: function() {
     this.model.destroy();
-    this.$el.empty();
+    this.$el.find('.panel').remove();
   }
 });

@@ -13,12 +13,12 @@
   <div class='panel-footer'>
     <div class='btn-group'>
       <% if (post.get('author_id') === current_user.id) { %>  
-        <a class='delete glyphicon glyphicon-trash btn 
-         btn-default btn-sm' title='delete post'>
+        <a class='glyphicon glyphicon-trash btn 
+         btn-default btn-sm' data-toggle='modal' data-target="<%= '#confirm-delete-modal-' + post.get('id') %>" title='delete post'>
         </a>
       <% } %>
       <a class='commentsBtn glyphicon glyphicon-comment btn btn-default btn-sm' data-toggle='modal'
-       data-target='<%= '#comments-modal-' + post.get('id') %>' title='comments'>
+       data-target="<%= '#comments-modal-' + post.get('id') %>" title='comments'>
       </a>
       <a class='tagBtn glyphicon glyphicon-tags btn btn-default btn-sm' title='tags'>
       </a>
@@ -40,6 +40,21 @@
      <div class="modal-body">
      </div>
      <div class="modal-footer">
+     </div>
+   </div>
+ </div>
+</div>
+
+<!-- Confirm Delete Modal -->
+
+<div class='modal fade' id="<%= 'confirm-delete-modal-' + post.get('id') %>"
+ tabindex="-1" role="dialog" aria-labelledby='confirm-delete-modal-label' aria-hidden="true">
+ <div class="modal-dialog">
+   <div class="modal-content">
+     <div class='modal-body'>
+       <h2>Are you sure you want to delete this post?</h2><br>
+       <button class='btn btn-lg btn-default' data-dismiss='modal'>Cancel</button>
+       <button class='deletePost btn btn-lg btn-danger' data-dismiss='modal'>Delete</button>
      </div>
    </div>
  </div>
