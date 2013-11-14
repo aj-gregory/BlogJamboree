@@ -81,14 +81,18 @@ JournalApp.Views.PostShow = Backbone.View.extend({
             "<br><form><input type='text' class='newTag'><button type='submit' class='addTag btn btn-default btn-sm'>Add Tag</button></form>"
           );
 
-          that.$el.find('.tagsField').slideToggle();
+          that.$el.find('.tagsField').slideToggle('default', function() {
+            that.$el.find('.tagBtn').removeClass('disabled');
+          });
         }
       });
     } else {
       that.$el.find('.tagsField').slideToggle('default', function() {
         that.$el.find('.tagsField').remove();
+        that.$el.find('.tagBtn').removeClass('disabled');
       });
     }
+    this.$el.find('.tagBtn').addClass('disabled');
   },
 
   addTag: function() {
