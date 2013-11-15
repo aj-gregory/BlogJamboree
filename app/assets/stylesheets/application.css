@@ -70,3 +70,8 @@ div.welcome {
   height:200px;
   vertical-align:middle
 }
+
+.main {
+  background-color: #E5F4FC;
+  min-height: 700px
+}

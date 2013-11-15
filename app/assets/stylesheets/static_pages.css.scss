@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 body {
- 	background-color: #289fc7;
+ 	background-color: #2c4762;
  }
 
 .sidebar {
@@ -12,7 +12,7 @@ body {
 
 hr {
   border-top-width: 3px;
-  border-color: #754719;
+  border-color: #2c4762;
 }
 
 li {
@@ -33,4 +33,25 @@ li {
 
 .topbar {
   text-align: right;
+}
+
+.try-it {
+  text-align: center;
+}
+
+.try-it a {
+  font-size:32pt;
+}
+
+.intro {
+  margin-top: 250px;
+  text-align: center;
+}
+
+.jam {
+  margin-left: 77px;
+}
+
+.btn-default {
+  border: #2c4762 1px solid;
 }
