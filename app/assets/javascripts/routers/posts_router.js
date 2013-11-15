@@ -1,12 +1,31 @@
 JournalApp.Routers.Blogs = Backbone.Router.extend({
 
   routes: {
-    "":"blogsIndex",
+    "":"root",
     "blogs/new":"blogNew",
     "blogs/find":"blogsFind",
     "blogs/:id":"blogShow",
     "blogs/:id/edit":"blogEdit",
     "tags/:tag":"findByTag"
+  },
+
+  root: function() {
+    var current_user = JSON.parse($('#current_user_json').html());
+    var firstBlog = JournalApp.blogs.findWhere({
+       user_id: current_user.id
+    });
+
+    if (firstBlog) { 
+      var firstBlogView = new JournalApp.Views.BlogShow({
+        model: firstBlog
+      });
+      this.swapView(firstBlogView);
+    } else {
+      var beginnerView = new JournalApp.Views.Beginner({
+        user: current_user
+      });
+      this.swapView(beginnerView);
+    }
   },
 
   blogsIndex: function() {

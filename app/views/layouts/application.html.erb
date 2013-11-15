@@ -7,7 +7,7 @@
    rel="stylesheet">
   <script type="text/javascript" src="//api.filepicker.io/v1/filepicker.js"></script>
   <script type='application/json' id='current_user_json'>
-    { "id": <%= current_user.id if current_user %> }
+    { "id": <%= current_user.id if current_user %>, "name": "<%= current_user.username if current_user %>" }
   </script>
   
   <%= javascript_include_tag "application" %>
