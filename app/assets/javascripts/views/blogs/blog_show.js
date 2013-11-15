@@ -88,11 +88,17 @@ JournalApp.Views.BlogShow = Backbone.View.extend({
       success: function(data) {
         that.model.followers().push(current_user.id);
         $('.followBtn').addClass('unfollowBtn');
-        $('.unfollowBtn').removeClass('followBtn');
+        $('.unfollowBtn').removeClass('followBtn disabled');
         $('.unfollowBtn').html('Unfollow');
         $('.followed').append('<a class="list-group-item" href="#/blogs' 
           + that.model.get('id') +'">' + that.model.escape('name') + '</a>');
       }
+    });
+    $('.followBtn').addClass('disabled');
+    $.gritter.add({
+      title: "Blog followed",
+      text: this.model.get('name'),
+      image: 'assets/checkmark.png'
     });
   },
 
@@ -115,11 +121,12 @@ JournalApp.Views.BlogShow = Backbone.View.extend({
         };
 
         $('.unfollowBtn').addClass('followBtn');
-        $('.unfollowBtn').removeClass('unfollowBtn');
+        $('.unfollowBtn').removeClass('unfollowBtn disabled');
         $('.followBtn').html('Follow');
         $('.list-group-item[href="#/blogs'+ that.model.get('id') + '"]').remove();
       }
     });
+    $('.unfollowBtn').addClass('disabled');
   },
 
   deleteBlog: function() {

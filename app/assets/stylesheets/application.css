@@ -7,9 +7,9 @@
  *
  * You're free to add application-wide styles to this file and they'll appear at the top of the
  * compiled file, but it's generally better to create a new file per style scope.
- *
+ *= require gritter
  *= require_self
- *= require_tree .
+ *= require_tree
  */
 
 textarea {
@@ -50,4 +50,18 @@ div.demoInvite a {
   background-color: #289fc7;
   color: white;
   border: 1px solid #cccccc;
+}
+
+.gritter-item.gritter-css3 {
+  background-color: #cccccc;
+  color: black;
+}
+
+.gritter-title {
+  font-size: 24px;
+  text-shadow: none;
+}
+
+.gritter-item.gritter-css3 * p {
+  font-size: 12px;
 }
