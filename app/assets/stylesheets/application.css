@@ -53,7 +53,7 @@ div.demoInvite a {
 }
 
 .gritter-item.gritter-css3 {
-  background-color: #cccccc;
+  background-color: rgba(204,204,204,0.5);
   color: black;
 }
 
