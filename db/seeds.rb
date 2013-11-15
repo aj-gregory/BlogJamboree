@@ -177,4 +177,4 @@ demo_blog_3 = Blog.create!({:user_id => anotherUser.id, :name => 'Movie Reviews'
       :photo_url => 'https://www.filepicker.io/api/file/WLPOcLOSRKrebLN8JYML'
     })
         
-        demo_tag_15 = Tag.create!({:post_id => demo_post_5.id, :body => 'DeLorean'})
+        demo_tag_15 = Tag.create!({:post_id => demo_post_8.id, :body => 'DeLorean'})
