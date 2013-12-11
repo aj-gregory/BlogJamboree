@@ -2,10 +2,10 @@
 
 <ul>
 	<% comments.forEach(function(comment) { %>
-    <p>
+    <p data-id='<%= comment.get('id') %>'>
 		  -<%= comment.escape('body') %>
       <% if (comment.get('author_id') === current_user.id) { %>
-  			<a class='delete btn btn-xs' data-id='<%= comment.get('id') %>' title='delete comment'>
+  			<a class='deleteComment btn btn-xs' data-id='<%= comment.get('id') %>' title='delete comment'>
          Remove
         </a>
       <% } %>
