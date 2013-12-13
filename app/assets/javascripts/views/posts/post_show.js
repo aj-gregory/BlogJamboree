@@ -33,7 +33,7 @@ JournalApp.Views.PostShow = Backbone.View.extend({
         var commentIndexView = new JournalApp.Views.CommentsIndex({
           collection: that.model.postComments
         });
-        that.$el.find('.modal-body').html(commentIndexView.render().$el);
+        that.$el.find('#comments-modal-' + that.model.id + ' .modal-body').html(commentIndexView.render().$el);
       }
     });
 
